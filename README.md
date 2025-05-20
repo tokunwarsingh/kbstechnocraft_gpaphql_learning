@@ -1,82 +1,49 @@
-Beginner Level
-Episode 1: Introduction to GraphQL
-What is GraphQL?
+# 📘 GraphQL Mastery: 20-Episode Blog Course
 
-REST vs GraphQL
+Welcome to the **GraphQL Mastery Blog Series** — a hands-on, beginner-to-advanced course covering the core concepts of GraphQL. Each episode dives into a specific topic and is accompanied by a `.zip` file containing source code and additional notes.
 
-Key concepts: queries, mutations, subscriptions, schema
+---
 
-Episode 2: Setting Up Your First GraphQL Server
-Installing dependencies (Apollo Server, Express, etc.)
+## 🚀 Getting Started
 
-Creating a basic schema and resolvers
+Before jumping in:
+- Make sure you have **Node.js** installed
+- Install **GraphQL Playground** or use Apollo Studio for testing
+- Clone this repo and unzip the episode folders as needed
 
-Running a hello-world query
+---
 
-Episode 3: Understanding GraphQL Schema & Types
-Scalars, Objects, Enums, Interfaces, Unions
+## 📚 Course Index
 
-Type system design and best practices
+| Episode | Title | Blog Link | Zip File |
+|--------:|:------|:----------|:---------|
+| 01 | [Introduction to GraphQL](./01-introduction-to-graphql/README.md) | ✅ | [📦 Download](./01-introduction-to-graphql.zip) |
+| 02 | [Setting Up GraphQL Server with Express](./02-setup-graphql-server/README.md) | ✅ | [📦 Download](./02-setup-graphql-server.zip) |
+| 03 | [GraphQL Schema & Type System](./03-schema-and-types/README.md) | ✅ | [📦 Download](./03-schema-and-types.zip) |
+| 04 | [Writing Your First Query](./04-first-query/README.md) | ✅ | [📦 Download](./04-first-query.zip) |
+| 05 | [Understanding Resolvers](./05-resolvers/README.md) | ✅ | [📦 Download](./05-resolvers.zip) |
+| 06 | [Nested Queries and Aliases](./06-nested-queries-aliases/README.md) | ✅ | [📦 Download](./06-nested-queries-aliases.zip) |
+| 07 | [Using Variables in Queries](./07-query-variables/README.md) | ✅ | [📦 Download](./07-query-variables.zip) |
+| 08 | [GraphQL Mutations](./08-mutations/README.md) | ✅ | [📦 Download](./08-mutations.zip) |
+| 09 | [Input Types & Arguments](./09-input-types/README.md) | ✅ | [📦 Download](./09-input-types.zip) |
+| 10 | [GraphQL Enums and Scalars](./10-enums-scalars/README.md) | ✅ | [📦 Download](./10-enums-scalars.zip) |
+| 11 | [Connecting to a Real Database (MongoDB)](./11-mongodb-connection/README.md) | ✅ | [📦 Download](./11-mongodb-connection.zip) |
+| 12 | [GraphQL Context for Auth & Config](./12-context-auth/README.md) | ✅ | [📦 Download](./12-context-auth.zip) |
+| 13 | [Authentication with JWT](./13-authentication-jwt/README.md) | ✅ | [📦 Download](./13-authentication-jwt.zip) |
+| 14 | [GraphQL Subscriptions (Realtime)](./14-subscriptions/README.md) | ✅ | [📦 Download](./14-subscriptions.zip) |
+| 15 | [Error Handling in GraphQL](./15-error-handling/README.md) | ✅ | [📦 Download](./15-error-handling.zip) |
+| 16 | [GraphQL Batching and Caching](./16-batching-caching/README.md) | ✅ | [📦 Download](./16-batching-caching.zip) |
+| 17 | [Using Apollo Client in Frontend](./17-apollo-client/README.md) | ✅ | [📦 Download](./17-apollo-client.zip) |
+| 18 | [GraphQL with TypeScript](./18-typescript-integration/README.md) | ✅ | [📦 Download](./18-typescript-integration.zip) |
+| 19 | [Advanced Schema Design](./19-advanced-schema-design/README.md) | ✅ | [📦 Download](./19-advanced-schema-design.zip) |
+| 20 | [Deploying Your GraphQL API](./20-deployment/README.md) | ✅ | [📦 Download](./20-deployment.zip) |
 
-Episode 4: Writing Queries and Mutations
-Structure of GraphQL queries
+---
 
-Variables in queries
+## 📂 Folder Structure
 
-Nested queries and relationships
+Each episode has:
+- `README.md`: Full blog post content
+- `src/`: Source code for the episode
+- `.zip`: Compressed version of the episode folder
 
-Writing basic mutations (create/update/delete)
-
-Episode 5: Connecting GraphQL to a Database
-Integrating with MongoDB or PostgreSQL
-
-Using ORM tools (like Prisma or Sequelize)
-
-Writing resolvers with database operations
-
-⚙️ Intermediate Level
-Episode 6: Input Types, Validation & Error Handling
-Using input types
-
-Custom validation logic
-
-Returning error objects and handling them properly
-
-Episode 7: Authentication & Authorization in GraphQL
-Protecting queries and mutations with JWT
-
-Role-based access control in resolvers
-
-Episode 8: GraphQL Subscriptions (Real-Time Updates)
-Understanding WebSockets in GraphQL
-
-Using subscriptions-transport-ws or Apollo Server's built-in support
-
-Example: Live chat or stock ticker
-
-Episode 9: Pagination & Filtering
-Offset vs Cursor pagination
-
-Applying filters, sorting and search queries
-
-🚀 Advanced Level
-Episode 10: GraphQL with React (Apollo Client)
-Setting up Apollo Client in React
-
-Executing queries and mutations
-
-Handling loading, error, and data states
-
-Episode 11: Schema Stitching & Federation (Microservices)
-Combining multiple schemas
-
-Apollo Federation basics
-
-Use cases in microservice architecture
-
-Episode 12: Performance, Caching & Tooling
-Using GraphQL Playground and Voyager
-
-Persisted queries and caching strategies
-
-Best practices for performance optimization
