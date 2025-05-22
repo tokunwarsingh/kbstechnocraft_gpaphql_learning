@@ -1,0 +1,182 @@
+[
+  {
+    "id": "s1",
+    "name": "Student 1 Lastname",
+    "email": "student1@example.edu",
+    "collegeId": "c3",
+    "enrollmentYear": 2022,
+    "major": "Biology",
+    "dateOfBirth": "1989-09-09"
+  },
+  {
+    "id": "s2",
+    "name": "Student 2 Lastname",
+    "email": "student2@example.edu",
+    "collegeId": "c13",
+    "enrollmentYear": 2019,
+    "major": "Environmental Science",
+    "dateOfBirth": "2004-10-18"
+  },
+  {
+    "id": "s3",
+    "name": "Student 3 Lastname",
+    "email": "student3@example.edu",
+    "collegeId": "c18",
+    "enrollmentYear": 2015,
+    "major": "Art",
+    "dateOfBirth": "1987-07-01"
+  },
+  {
+    "id": "s4",
+    "name": "Student 4 Lastname",
+    "email": "student4@example.edu",
+    "collegeId": "c19",
+    "enrollmentYear": 2017,
+    "major": "Sociology",
+    "dateOfBirth": "2005-10-04"
+  },
+  {
+    "id": "s5",
+    "name": "Student 5 Lastname",
+    "email": "student5@example.edu",
+    "collegeId": "c13",
+    "enrollmentYear": 2022,
+    "major": "Environmental Science",
+    "dateOfBirth": "1985-04-02"
+  },
+  {
+    "id": "s6",
+    "name": "Student 6 Lastname",
+    "email": "student6@example.edu",
+    "collegeId": "c20",
+    "enrollmentYear": 2015,
+    "major": "Chemistry",
+    "dateOfBirth": "2002-05-05"
+  },
+  {
+    "id": "s7",
+    "name": "Student 7 Lastname",
+    "email": "student7@example.edu",
+    "collegeId": "c19",
+    "enrollmentYear": 2015,
+    "major": "Education",
+    "dateOfBirth": "2005-05-31"
+  },
+  {
+    "id": "s8",
+    "name": "Student 8 Lastname",
+    "email": "student8@example.edu",
+    "collegeId": "c9",
+    "enrollmentYear": 2023,
+    "major": "Music",
+    "dateOfBirth": "2001-03-21"
+  },
+  {
+    "id": "s9",
+    "name": "Student 9 Lastname",
+    "email": "student9@example.edu",
+    "collegeId": "c2",
+    "enrollmentYear": 2015,
+    "major": "Philosophy",
+    "dateOfBirth": "1989-02-19"
+  },
+  {
+    "id": "s10",
+    "name": "Student 10 Lastname",
+    "email": "student10@example.edu",
+    "collegeId": "c9",
+    "enrollmentYear": 2018,
+    "major": "Chemistry",
+    "dateOfBirth": "2003-11-06"
+  },
+  {
+    "id": "s11",
+    "name": "Student 11 Lastname",
+    "email": "student11@example.edu",
+    "collegeId": "c20",
+    "enrollmentYear": 2018,
+    "major": "History",
+    "dateOfBirth": "2001-01-03"
+  },
+  {
+    "id": "s12",
+    "name": "Student 12 Lastname",
+    "email": "student12@example.edu",
+    "collegeId": "c1",
+    "enrollmentYear": 2015,
+    "major": "Education",
+    "dateOfBirth": "1988-11-15"
+  },
+  {
+    "id": "s13",
+    "name": "Student 13 Lastname",
+    "email": "student13@example.edu",
+    "collegeId": "c2",
+    "enrollmentYear": 2022,
+    "major": "Music",
+    "dateOfBirth": "2002-12-13"
+  },
+  {
+    "id": "s14",
+    "name": "Student 14 Lastname",
+    "email": "student14@example.edu",
+    "collegeId": "c16",
+    "enrollmentYear": 2023,
+    "major": "Medicine",
+    "dateOfBirth": "1994-10-03"
+  },
+  {
+    "id": "s15",
+    "name": "Student 15 Lastname",
+    "email": "student15@example.edu",
+    "collegeId": "c11",
+    "enrollmentYear": 2019,
+    "major": "Political Science",
+    "dateOfBirth": "2001-02-13"
+  },
+  {
+    "id": "s16",
+    "name": "Student 16 Lastname",
+    "email": "student16@example.edu",
+    "collegeId": "c20",
+    "enrollmentYear": 2018,
+    "major": "Environmental Science",
+    "dateOfBirth": "2002-05-28"
+  },
+  {
+    "id": "s17",
+    "name": "Student 17 Lastname",
+    "email": "student17@example.edu",
+    "collegeId": "c11",
+    "enrollmentYear": 2019,
+    "major": "Chemistry",
+    "dateOfBirth": "1992-06-11"
+  },
+  {
+    "id": "s18",
+    "name": "Student 18 Lastname",
+    "email": "student18@example.edu",
+    "collegeId": "c9",
+    "enrollmentYear": 2023,
+    "major": "Environmental Science",
+    "dateOfBirth": "2004-08-17"
+  },
+  {
+    "id": "s19",
+    "name": "Student 19 Lastname",
+    "email": "student19@example.edu",
+    "collegeId": "c20",
+    "enrollmentYear": 2020,
+    "major": "Art",
+    "dateOfBirth": "2005-02-15"
+  },
+  {
+    "id": "s20",
+    "name": "Student 20 Lastname",
+    "email": "student20@example.edu",
+    "collegeId": "c15",
+    "enrollmentYear": 2020,
+    "major": "Art",
+    "dateOfBirth": "1988-02-14"
+  }
+]
