@@ -115,5 +115,5 @@ erDiagram
     SUBJECTS ||--o{ CLASSES : "includes"
     STUDENTS ||--o{ MARKS : "receives"
     CLASSES ||--o{ MARKS : "contains"
-
+```
 
