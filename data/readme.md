@@ -116,4 +116,3 @@ erDiagram
     STUDENTS ||--o{ MARKS : "receives"
     CLASSES ||--o{ MARKS : "contains"
 ```
-
