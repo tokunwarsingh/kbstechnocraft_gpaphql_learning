@@ -1,0 +1,1752 @@
+[
+  {
+    "code": "AD",
+    "name": "Andorra",
+    "capital": "Andorra la Vella",
+    "currency": "EUR",
+    "phone": "376"
+  },
+  {
+    "code": "AE",
+    "name": "United Arab Emirates",
+    "capital": "Abu Dhabi",
+    "currency": "AED",
+    "phone": "971"
+  },
+  {
+    "code": "AF",
+    "name": "Afghanistan",
+    "capital": "Kabul",
+    "currency": "AFN",
+    "phone": "93"
+  },
+  {
+    "code": "AG",
+    "name": "Antigua and Barbuda",
+    "capital": "Saint John's",
+    "currency": "XCD",
+    "phone": "1268"
+  },
+  {
+    "code": "AI",
+    "name": "Anguilla",
+    "capital": "The Valley",
+    "currency": "XCD",
+    "phone": "1264"
+  },
+  {
+    "code": "AL",
+    "name": "Albania",
+    "capital": "Tirana",
+    "currency": "ALL",
+    "phone": "355"
+  },
+  {
+    "code": "AM",
+    "name": "Armenia",
+    "capital": "Yerevan",
+    "currency": "AMD",
+    "phone": "374"
+  },
+  {
+    "code": "AO",
+    "name": "Angola",
+    "capital": "Luanda",
+    "currency": "AOA",
+    "phone": "244"
+  },
+  {
+    "code": "AQ",
+    "name": "Antarctica",
+    "capital": null,
+    "currency": null,
+    "phone": "672"
+  },
+  {
+    "code": "AR",
+    "name": "Argentina",
+    "capital": "Buenos Aires",
+    "currency": "ARS",
+    "phone": "54"
+  },
+  {
+    "code": "AS",
+    "name": "American Samoa",
+    "capital": "Pago Pago",
+    "currency": "USD",
+    "phone": "1684"
+  },
+  {
+    "code": "AT",
+    "name": "Austria",
+    "capital": "Vienna",
+    "currency": "EUR",
+    "phone": "43"
+  },
+  {
+    "code": "AU",
+    "name": "Australia",
+    "capital": "Canberra",
+    "currency": "AUD",
+    "phone": "61"
+  },
+  {
+    "code": "AW",
+    "name": "Aruba",
+    "capital": "Oranjestad",
+    "currency": "AWG",
+    "phone": "297"
+  },
+  {
+    "code": "AX",
+    "name": "Åland",
+    "capital": "Mariehamn",
+    "currency": "EUR",
+    "phone": "358"
+  },
+  {
+    "code": "AZ",
+    "name": "Azerbaijan",
+    "capital": "Baku",
+    "currency": "AZN",
+    "phone": "994"
+  },
+  {
+    "code": "BA",
+    "name": "Bosnia and Herzegovina",
+    "capital": "Sarajevo",
+    "currency": "BAM",
+    "phone": "387"
+  },
+  {
+    "code": "BB",
+    "name": "Barbados",
+    "capital": "Bridgetown",
+    "currency": "BBD",
+    "phone": "1246"
+  },
+  {
+    "code": "BD",
+    "name": "Bangladesh",
+    "capital": "Dhaka",
+    "currency": "BDT",
+    "phone": "880"
+  },
+  {
+    "code": "BE",
+    "name": "Belgium",
+    "capital": "Brussels",
+    "currency": "EUR",
+    "phone": "32"
+  },
+  {
+    "code": "BF",
+    "name": "Burkina Faso",
+    "capital": "Ouagadougou",
+    "currency": "XOF",
+    "phone": "226"
+  },
+  {
+    "code": "BG",
+    "name": "Bulgaria",
+    "capital": "Sofia",
+    "currency": "BGN",
+    "phone": "359"
+  },
+  {
+    "code": "BH",
+    "name": "Bahrain",
+    "capital": "Manama",
+    "currency": "BHD",
+    "phone": "973"
+  },
+  {
+    "code": "BI",
+    "name": "Burundi",
+    "capital": "Bujumbura",
+    "currency": "BIF",
+    "phone": "257"
+  },
+  {
+    "code": "BJ",
+    "name": "Benin",
+    "capital": "Porto-Novo",
+    "currency": "XOF",
+    "phone": "229"
+  },
+  {
+    "code": "BL",
+    "name": "Saint Barthélemy",
+    "capital": "Gustavia",
+    "currency": "EUR",
+    "phone": "590"
+  },
+  {
+    "code": "BM",
+    "name": "Bermuda",
+    "capital": "Hamilton",
+    "currency": "BMD",
+    "phone": "1441"
+  },
+  {
+    "code": "BN",
+    "name": "Brunei",
+    "capital": "Bandar Seri Begawan",
+    "currency": "BND",
+    "phone": "673"
+  },
+  {
+    "code": "BO",
+    "name": "Bolivia",
+    "capital": "Sucre",
+    "currency": "BOB,BOV",
+    "phone": "591"
+  },
+  {
+    "code": "BQ",
+    "name": "Bonaire",
+    "capital": "Kralendijk",
+    "currency": "USD",
+    "phone": "5997"
+  },
+  {
+    "code": "BR",
+    "name": "Brazil",
+    "capital": "Brasília",
+    "currency": "BRL",
+    "phone": "55"
+  },
+  {
+    "code": "BS",
+    "name": "Bahamas",
+    "capital": "Nassau",
+    "currency": "BSD",
+    "phone": "1242"
+  },
+  {
+    "code": "BT",
+    "name": "Bhutan",
+    "capital": "Thimphu",
+    "currency": "BTN,INR",
+    "phone": "975"
+  },
+  {
+    "code": "BV",
+    "name": "Bouvet Island",
+    "capital": null,
+    "currency": "NOK",
+    "phone": "47"
+  },
+  {
+    "code": "BW",
+    "name": "Botswana",
+    "capital": "Gaborone",
+    "currency": "BWP",
+    "phone": "267"
+  },
+  {
+    "code": "BY",
+    "name": "Belarus",
+    "capital": "Minsk",
+    "currency": "BYN",
+    "phone": "375"
+  },
+  {
+    "code": "BZ",
+    "name": "Belize",
+    "capital": "Belmopan",
+    "currency": "BZD",
+    "phone": "501"
+  },
+  {
+    "code": "CA",
+    "name": "Canada",
+    "capital": "Ottawa",
+    "currency": "CAD",
+    "phone": "1"
+  },
+  {
+    "code": "CC",
+    "name": "Cocos [Keeling] Islands",
+    "capital": "West Island",
+    "currency": "AUD",
+    "phone": "61"
+  },
+  {
+    "code": "CD",
+    "name": "Democratic Republic of the Congo",
+    "capital": "Kinshasa",
+    "currency": "CDF",
+    "phone": "243"
+  },
+  {
+    "code": "CF",
+    "name": "Central African Republic",
+    "capital": "Bangui",
+    "currency": "XAF",
+    "phone": "236"
+  },
+  {
+    "code": "CG",
+    "name": "Republic of the Congo",
+    "capital": "Brazzaville",
+    "currency": "XAF",
+    "phone": "242"
+  },
+  {
+    "code": "CH",
+    "name": "Switzerland",
+    "capital": "Bern",
+    "currency": "CHE,CHF,CHW",
+    "phone": "41"
+  },
+  {
+    "code": "CI",
+    "name": "Ivory Coast",
+    "capital": "Yamoussoukro",
+    "currency": "XOF",
+    "phone": "225"
+  },
+  {
+    "code": "CK",
+    "name": "Cook Islands",
+    "capital": "Avarua",
+    "currency": "NZD",
+    "phone": "682"
+  },
+  {
+    "code": "CL",
+    "name": "Chile",
+    "capital": "Santiago",
+    "currency": "CLF,CLP",
+    "phone": "56"
+  },
+  {
+    "code": "CM",
+    "name": "Cameroon",
+    "capital": "Yaoundé",
+    "currency": "XAF",
+    "phone": "237"
+  },
+  {
+    "code": "CN",
+    "name": "China",
+    "capital": "Beijing",
+    "currency": "CNY",
+    "phone": "86"
+  },
+  {
+    "code": "CO",
+    "name": "Colombia",
+    "capital": "Bogotá",
+    "currency": "COP",
+    "phone": "57"
+  },
+  {
+    "code": "CR",
+    "name": "Costa Rica",
+    "capital": "San José",
+    "currency": "CRC",
+    "phone": "506"
+  },
+  {
+    "code": "CU",
+    "name": "Cuba",
+    "capital": "Havana",
+    "currency": "CUC,CUP",
+    "phone": "53"
+  },
+  {
+    "code": "CV",
+    "name": "Cape Verde",
+    "capital": "Praia",
+    "currency": "CVE",
+    "phone": "238"
+  },
+  {
+    "code": "CW",
+    "name": "Curacao",
+    "capital": "Willemstad",
+    "currency": "ANG",
+    "phone": "5999"
+  },
+  {
+    "code": "CX",
+    "name": "Christmas Island",
+    "capital": "Flying Fish Cove",
+    "currency": "AUD",
+    "phone": "61"
+  },
+  {
+    "code": "CY",
+    "name": "Cyprus",
+    "capital": "Nicosia",
+    "currency": "EUR",
+    "phone": "357"
+  },
+  {
+    "code": "CZ",
+    "name": "Czech Republic",
+    "capital": "Prague",
+    "currency": "CZK",
+    "phone": "420"
+  },
+  {
+    "code": "DE",
+    "name": "Germany",
+    "capital": "Berlin",
+    "currency": "EUR",
+    "phone": "49"
+  },
+  {
+    "code": "DJ",
+    "name": "Djibouti",
+    "capital": "Djibouti",
+    "currency": "DJF",
+    "phone": "253"
+  },
+  {
+    "code": "DK",
+    "name": "Denmark",
+    "capital": "Copenhagen",
+    "currency": "DKK",
+    "phone": "45"
+  },
+  {
+    "code": "DM",
+    "name": "Dominica",
+    "capital": "Roseau",
+    "currency": "XCD",
+    "phone": "1767"
+  },
+  {
+    "code": "DO",
+    "name": "Dominican Republic",
+    "capital": "Santo Domingo",
+    "currency": "DOP",
+    "phone": "1809,1829,1849"
+  },
+  {
+    "code": "DZ",
+    "name": "Algeria",
+    "capital": "Algiers",
+    "currency": "DZD",
+    "phone": "213"
+  },
+  {
+    "code": "EC",
+    "name": "Ecuador",
+    "capital": "Quito",
+    "currency": "USD",
+    "phone": "593"
+  },
+  {
+    "code": "EE",
+    "name": "Estonia",
+    "capital": "Tallinn",
+    "currency": "EUR",
+    "phone": "372"
+  },
+  {
+    "code": "EG",
+    "name": "Egypt",
+    "capital": "Cairo",
+    "currency": "EGP",
+    "phone": "20"
+  },
+  {
+    "code": "EH",
+    "name": "Western Sahara",
+    "capital": "El Aaiún",
+    "currency": "MAD,DZD,MRU",
+    "phone": "212"
+  },
+  {
+    "code": "ER",
+    "name": "Eritrea",
+    "capital": "Asmara",
+    "currency": "ERN",
+    "phone": "291"
+  },
+  {
+    "code": "ES",
+    "name": "Spain",
+    "capital": "Madrid",
+    "currency": "EUR",
+    "phone": "34"
+  },
+  {
+    "code": "ET",
+    "name": "Ethiopia",
+    "capital": "Addis Ababa",
+    "currency": "ETB",
+    "phone": "251"
+  },
+  {
+    "code": "FI",
+    "name": "Finland",
+    "capital": "Helsinki",
+    "currency": "EUR",
+    "phone": "358"
+  },
+  {
+    "code": "FJ",
+    "name": "Fiji",
+    "capital": "Suva",
+    "currency": "FJD",
+    "phone": "679"
+  },
+  {
+    "code": "FK",
+    "name": "Falkland Islands",
+    "capital": "Stanley",
+    "currency": "FKP",
+    "phone": "500"
+  },
+  {
+    "code": "FM",
+    "name": "Micronesia",
+    "capital": "Palikir",
+    "currency": "USD",
+    "phone": "691"
+  },
+  {
+    "code": "FO",
+    "name": "Faroe Islands",
+    "capital": "Tórshavn",
+    "currency": "DKK",
+    "phone": "298"
+  },
+  {
+    "code": "FR",
+    "name": "France",
+    "capital": "Paris",
+    "currency": "EUR",
+    "phone": "33"
+  },
+  {
+    "code": "GA",
+    "name": "Gabon",
+    "capital": "Libreville",
+    "currency": "XAF",
+    "phone": "241"
+  },
+  {
+    "code": "GB",
+    "name": "United Kingdom",
+    "capital": "London",
+    "currency": "GBP",
+    "phone": "44"
+  },
+  {
+    "code": "GD",
+    "name": "Grenada",
+    "capital": "St. George's",
+    "currency": "XCD",
+    "phone": "1473"
+  },
+  {
+    "code": "GE",
+    "name": "Georgia",
+    "capital": "Tbilisi",
+    "currency": "GEL",
+    "phone": "995"
+  },
+  {
+    "code": "GF",
+    "name": "French Guiana",
+    "capital": "Cayenne",
+    "currency": "EUR",
+    "phone": "594"
+  },
+  {
+    "code": "GG",
+    "name": "Guernsey",
+    "capital": "St. Peter Port",
+    "currency": "GBP",
+    "phone": "44"
+  },
+  {
+    "code": "GH",
+    "name": "Ghana",
+    "capital": "Accra",
+    "currency": "GHS",
+    "phone": "233"
+  },
+  {
+    "code": "GI",
+    "name": "Gibraltar",
+    "capital": "Gibraltar",
+    "currency": "GIP",
+    "phone": "350"
+  },
+  {
+    "code": "GL",
+    "name": "Greenland",
+    "capital": "Nuuk",
+    "currency": "DKK",
+    "phone": "299"
+  },
+  {
+    "code": "GM",
+    "name": "Gambia",
+    "capital": "Banjul",
+    "currency": "GMD",
+    "phone": "220"
+  },
+  {
+    "code": "GN",
+    "name": "Guinea",
+    "capital": "Conakry",
+    "currency": "GNF",
+    "phone": "224"
+  },
+  {
+    "code": "GP",
+    "name": "Guadeloupe",
+    "capital": "Basse-Terre",
+    "currency": "EUR",
+    "phone": "590"
+  },
+  {
+    "code": "GQ",
+    "name": "Equatorial Guinea",
+    "capital": "Malabo",
+    "currency": "XAF",
+    "phone": "240"
+  },
+  {
+    "code": "GR",
+    "name": "Greece",
+    "capital": "Athens",
+    "currency": "EUR",
+    "phone": "30"
+  },
+  {
+    "code": "GS",
+    "name": "South Georgia and the South Sandwich Islands",
+    "capital": "King Edward Point",
+    "currency": "GBP",
+    "phone": "500"
+  },
+  {
+    "code": "GT",
+    "name": "Guatemala",
+    "capital": "Guatemala City",
+    "currency": "GTQ",
+    "phone": "502"
+  },
+  {
+    "code": "GU",
+    "name": "Guam",
+    "capital": "Hagåtña",
+    "currency": "USD",
+    "phone": "1671"
+  },
+  {
+    "code": "GW",
+    "name": "Guinea-Bissau",
+    "capital": "Bissau",
+    "currency": "XOF",
+    "phone": "245"
+  },
+  {
+    "code": "GY",
+    "name": "Guyana",
+    "capital": "Georgetown",
+    "currency": "GYD",
+    "phone": "592"
+  },
+  {
+    "code": "HK",
+    "name": "Hong Kong",
+    "capital": "City of Victoria",
+    "currency": "HKD",
+    "phone": "852"
+  },
+  {
+    "code": "HM",
+    "name": "Heard Island and McDonald Islands",
+    "capital": null,
+    "currency": "AUD",
+    "phone": "61"
+  },
+  {
+    "code": "HN",
+    "name": "Honduras",
+    "capital": "Tegucigalpa",
+    "currency": "HNL",
+    "phone": "504"
+  },
+  {
+    "code": "HR",
+    "name": "Croatia",
+    "capital": "Zagreb",
+    "currency": "HRK",
+    "phone": "385"
+  },
+  {
+    "code": "HT",
+    "name": "Haiti",
+    "capital": "Port-au-Prince",
+    "currency": "HTG,USD",
+    "phone": "509"
+  },
+  {
+    "code": "HU",
+    "name": "Hungary",
+    "capital": "Budapest",
+    "currency": "HUF",
+    "phone": "36"
+  },
+  {
+    "code": "ID",
+    "name": "Indonesia",
+    "capital": "Jakarta",
+    "currency": "IDR",
+    "phone": "62"
+  },
+  {
+    "code": "IE",
+    "name": "Ireland",
+    "capital": "Dublin",
+    "currency": "EUR",
+    "phone": "353"
+  },
+  {
+    "code": "IL",
+    "name": "Israel",
+    "capital": "Jerusalem",
+    "currency": "ILS",
+    "phone": "972"
+  },
+  {
+    "code": "IM",
+    "name": "Isle of Man",
+    "capital": "Douglas",
+    "currency": "GBP",
+    "phone": "44"
+  },
+  {
+    "code": "IN",
+    "name": "India",
+    "capital": "New Delhi",
+    "currency": "INR",
+    "phone": "91"
+  },
+  {
+    "code": "IO",
+    "name": "British Indian Ocean Territory",
+    "capital": "Diego Garcia",
+    "currency": "USD",
+    "phone": "246"
+  },
+  {
+    "code": "IQ",
+    "name": "Iraq",
+    "capital": "Baghdad",
+    "currency": "IQD",
+    "phone": "964"
+  },
+  {
+    "code": "IR",
+    "name": "Iran",
+    "capital": "Tehran",
+    "currency": "IRR",
+    "phone": "98"
+  },
+  {
+    "code": "IS",
+    "name": "Iceland",
+    "capital": "Reykjavik",
+    "currency": "ISK",
+    "phone": "354"
+  },
+  {
+    "code": "IT",
+    "name": "Italy",
+    "capital": "Rome",
+    "currency": "EUR",
+    "phone": "39"
+  },
+  {
+    "code": "JE",
+    "name": "Jersey",
+    "capital": "Saint Helier",
+    "currency": "GBP",
+    "phone": "44"
+  },
+  {
+    "code": "JM",
+    "name": "Jamaica",
+    "capital": "Kingston",
+    "currency": "JMD",
+    "phone": "1876"
+  },
+  {
+    "code": "JO",
+    "name": "Jordan",
+    "capital": "Amman",
+    "currency": "JOD",
+    "phone": "962"
+  },
+  {
+    "code": "JP",
+    "name": "Japan",
+    "capital": "Tokyo",
+    "currency": "JPY",
+    "phone": "81"
+  },
+  {
+    "code": "KE",
+    "name": "Kenya",
+    "capital": "Nairobi",
+    "currency": "KES",
+    "phone": "254"
+  },
+  {
+    "code": "KG",
+    "name": "Kyrgyzstan",
+    "capital": "Bishkek",
+    "currency": "KGS",
+    "phone": "996"
+  },
+  {
+    "code": "KH",
+    "name": "Cambodia",
+    "capital": "Phnom Penh",
+    "currency": "KHR",
+    "phone": "855"
+  },
+  {
+    "code": "KI",
+    "name": "Kiribati",
+    "capital": "South Tarawa",
+    "currency": "AUD",
+    "phone": "686"
+  },
+  {
+    "code": "KM",
+    "name": "Comoros",
+    "capital": "Moroni",
+    "currency": "KMF",
+    "phone": "269"
+  },
+  {
+    "code": "KN",
+    "name": "Saint Kitts and Nevis",
+    "capital": "Basseterre",
+    "currency": "XCD",
+    "phone": "1869"
+  },
+  {
+    "code": "KP",
+    "name": "North Korea",
+    "capital": "Pyongyang",
+    "currency": "KPW",
+    "phone": "850"
+  },
+  {
+    "code": "KR",
+    "name": "South Korea",
+    "capital": "Seoul",
+    "currency": "KRW",
+    "phone": "82"
+  },
+  {
+    "code": "KW",
+    "name": "Kuwait",
+    "capital": "Kuwait City",
+    "currency": "KWD",
+    "phone": "965"
+  },
+  {
+    "code": "KY",
+    "name": "Cayman Islands",
+    "capital": "George Town",
+    "currency": "KYD",
+    "phone": "1345"
+  },
+  {
+    "code": "KZ",
+    "name": "Kazakhstan",
+    "capital": "Astana",
+    "currency": "KZT",
+    "phone": "76,77"
+  },
+  {
+    "code": "LA",
+    "name": "Laos",
+    "capital": "Vientiane",
+    "currency": "LAK",
+    "phone": "856"
+  },
+  {
+    "code": "LB",
+    "name": "Lebanon",
+    "capital": "Beirut",
+    "currency": "LBP",
+    "phone": "961"
+  },
+  {
+    "code": "LC",
+    "name": "Saint Lucia",
+    "capital": "Castries",
+    "currency": "XCD",
+    "phone": "1758"
+  },
+  {
+    "code": "LI",
+    "name": "Liechtenstein",
+    "capital": "Vaduz",
+    "currency": "CHF",
+    "phone": "423"
+  },
+  {
+    "code": "LK",
+    "name": "Sri Lanka",
+    "capital": "Colombo",
+    "currency": "LKR",
+    "phone": "94"
+  },
+  {
+    "code": "LR",
+    "name": "Liberia",
+    "capital": "Monrovia",
+    "currency": "LRD",
+    "phone": "231"
+  },
+  {
+    "code": "LS",
+    "name": "Lesotho",
+    "capital": "Maseru",
+    "currency": "LSL,ZAR",
+    "phone": "266"
+  },
+  {
+    "code": "LT",
+    "name": "Lithuania",
+    "capital": "Vilnius",
+    "currency": "EUR",
+    "phone": "370"
+  },
+  {
+    "code": "LU",
+    "name": "Luxembourg",
+    "capital": "Luxembourg",
+    "currency": "EUR",
+    "phone": "352"
+  },
+  {
+    "code": "LV",
+    "name": "Latvia",
+    "capital": "Riga",
+    "currency": "EUR",
+    "phone": "371"
+  },
+  {
+    "code": "LY",
+    "name": "Libya",
+    "capital": "Tripoli",
+    "currency": "LYD",
+    "phone": "218"
+  },
+  {
+    "code": "MA",
+    "name": "Morocco",
+    "capital": "Rabat",
+    "currency": "MAD",
+    "phone": "212"
+  },
+  {
+    "code": "MC",
+    "name": "Monaco",
+    "capital": "Monaco",
+    "currency": "EUR",
+    "phone": "377"
+  },
+  {
+    "code": "MD",
+    "name": "Moldova",
+    "capital": "Chișinău",
+    "currency": "MDL",
+    "phone": "373"
+  },
+  {
+    "code": "ME",
+    "name": "Montenegro",
+    "capital": "Podgorica",
+    "currency": "EUR",
+    "phone": "382"
+  },
+  {
+    "code": "MF",
+    "name": "Saint Martin",
+    "capital": "Marigot",
+    "currency": "EUR",
+    "phone": "590"
+  },
+  {
+    "code": "MG",
+    "name": "Madagascar",
+    "capital": "Antananarivo",
+    "currency": "MGA",
+    "phone": "261"
+  },
+  {
+    "code": "MH",
+    "name": "Marshall Islands",
+    "capital": "Majuro",
+    "currency": "USD",
+    "phone": "692"
+  },
+  {
+    "code": "MK",
+    "name": "North Macedonia",
+    "capital": "Skopje",
+    "currency": "MKD",
+    "phone": "389"
+  },
+  {
+    "code": "ML",
+    "name": "Mali",
+    "capital": "Bamako",
+    "currency": "XOF",
+    "phone": "223"
+  },
+  {
+    "code": "MM",
+    "name": "Myanmar [Burma]",
+    "capital": "Naypyidaw",
+    "currency": "MMK",
+    "phone": "95"
+  },
+  {
+    "code": "MN",
+    "name": "Mongolia",
+    "capital": "Ulan Bator",
+    "currency": "MNT",
+    "phone": "976"
+  },
+  {
+    "code": "MO",
+    "name": "Macao",
+    "capital": null,
+    "currency": "MOP",
+    "phone": "853"
+  },
+  {
+    "code": "MP",
+    "name": "Northern Mariana Islands",
+    "capital": "Saipan",
+    "currency": "USD",
+    "phone": "1670"
+  },
+  {
+    "code": "MQ",
+    "name": "Martinique",
+    "capital": "Fort-de-France",
+    "currency": "EUR",
+    "phone": "596"
+  },
+  {
+    "code": "MR",
+    "name": "Mauritania",
+    "capital": "Nouakchott",
+    "currency": "MRU",
+    "phone": "222"
+  },
+  {
+    "code": "MS",
+    "name": "Montserrat",
+    "capital": "Plymouth",
+    "currency": "XCD",
+    "phone": "1664"
+  },
+  {
+    "code": "MT",
+    "name": "Malta",
+    "capital": "Valletta",
+    "currency": "EUR",
+    "phone": "356"
+  },
+  {
+    "code": "MU",
+    "name": "Mauritius",
+    "capital": "Port Louis",
+    "currency": "MUR",
+    "phone": "230"
+  },
+  {
+    "code": "MV",
+    "name": "Maldives",
+    "capital": "Malé",
+    "currency": "MVR",
+    "phone": "960"
+  },
+  {
+    "code": "MW",
+    "name": "Malawi",
+    "capital": "Lilongwe",
+    "currency": "MWK",
+    "phone": "265"
+  },
+  {
+    "code": "MX",
+    "name": "Mexico",
+    "capital": "Mexico City",
+    "currency": "MXN",
+    "phone": "52"
+  },
+  {
+    "code": "MY",
+    "name": "Malaysia",
+    "capital": "Kuala Lumpur",
+    "currency": "MYR",
+    "phone": "60"
+  },
+  {
+    "code": "MZ",
+    "name": "Mozambique",
+    "capital": "Maputo",
+    "currency": "MZN",
+    "phone": "258"
+  },
+  {
+    "code": "NA",
+    "name": "Namibia",
+    "capital": "Windhoek",
+    "currency": "NAD,ZAR",
+    "phone": "264"
+  },
+  {
+    "code": "NC",
+    "name": "New Caledonia",
+    "capital": "Nouméa",
+    "currency": "XPF",
+    "phone": "687"
+  },
+  {
+    "code": "NE",
+    "name": "Niger",
+    "capital": "Niamey",
+    "currency": "XOF",
+    "phone": "227"
+  },
+  {
+    "code": "NF",
+    "name": "Norfolk Island",
+    "capital": "Kingston",
+    "currency": "AUD",
+    "phone": "672"
+  },
+  {
+    "code": "NG",
+    "name": "Nigeria",
+    "capital": "Abuja",
+    "currency": "NGN",
+    "phone": "234"
+  },
+  {
+    "code": "NI",
+    "name": "Nicaragua",
+    "capital": "Managua",
+    "currency": "NIO",
+    "phone": "505"
+  },
+  {
+    "code": "NL",
+    "name": "Netherlands",
+    "capital": "Amsterdam",
+    "currency": "EUR",
+    "phone": "31"
+  },
+  {
+    "code": "NO",
+    "name": "Norway",
+    "capital": "Oslo",
+    "currency": "NOK",
+    "phone": "47"
+  },
+  {
+    "code": "NP",
+    "name": "Nepal",
+    "capital": "Kathmandu",
+    "currency": "NPR",
+    "phone": "977"
+  },
+  {
+    "code": "NR",
+    "name": "Nauru",
+    "capital": "Yaren",
+    "currency": "AUD",
+    "phone": "674"
+  },
+  {
+    "code": "NU",
+    "name": "Niue",
+    "capital": "Alofi",
+    "currency": "NZD",
+    "phone": "683"
+  },
+  {
+    "code": "NZ",
+    "name": "New Zealand",
+    "capital": "Wellington",
+    "currency": "NZD",
+    "phone": "64"
+  },
+  {
+    "code": "OM",
+    "name": "Oman",
+    "capital": "Muscat",
+    "currency": "OMR",
+    "phone": "968"
+  },
+  {
+    "code": "PA",
+    "name": "Panama",
+    "capital": "Panama City",
+    "currency": "PAB,USD",
+    "phone": "507"
+  },
+  {
+    "code": "PE",
+    "name": "Peru",
+    "capital": "Lima",
+    "currency": "PEN",
+    "phone": "51"
+  },
+  {
+    "code": "PF",
+    "name": "French Polynesia",
+    "capital": "Papeetē",
+    "currency": "XPF",
+    "phone": "689"
+  },
+  {
+    "code": "PG",
+    "name": "Papua New Guinea",
+    "capital": "Port Moresby",
+    "currency": "PGK",
+    "phone": "675"
+  },
+  {
+    "code": "PH",
+    "name": "Philippines",
+    "capital": "Manila",
+    "currency": "PHP",
+    "phone": "63"
+  },
+  {
+    "code": "PK",
+    "name": "Pakistan",
+    "capital": "Islamabad",
+    "currency": "PKR",
+    "phone": "92"
+  },
+  {
+    "code": "PL",
+    "name": "Poland",
+    "capital": "Warsaw",
+    "currency": "PLN",
+    "phone": "48"
+  },
+  {
+    "code": "PM",
+    "name": "Saint Pierre and Miquelon",
+    "capital": "Saint-Pierre",
+    "currency": "EUR",
+    "phone": "508"
+  },
+  {
+    "code": "PN",
+    "name": "Pitcairn Islands",
+    "capital": "Adamstown",
+    "currency": "NZD",
+    "phone": "64"
+  },
+  {
+    "code": "PR",
+    "name": "Puerto Rico",
+    "capital": "San Juan",
+    "currency": "USD",
+    "phone": "1787,1939"
+  },
+  {
+    "code": "PS",
+    "name": "Palestine",
+    "capital": "Ramallah",
+    "currency": "ILS",
+    "phone": "970"
+  },
+  {
+    "code": "PT",
+    "name": "Portugal",
+    "capital": "Lisbon",
+    "currency": "EUR",
+    "phone": "351"
+  },
+  {
+    "code": "PW",
+    "name": "Palau",
+    "capital": "Ngerulmud",
+    "currency": "USD",
+    "phone": "680"
+  },
+  {
+    "code": "PY",
+    "name": "Paraguay",
+    "capital": "Asunción",
+    "currency": "PYG",
+    "phone": "595"
+  },
+  {
+    "code": "QA",
+    "name": "Qatar",
+    "capital": "Doha",
+    "currency": "QAR",
+    "phone": "974"
+  },
+  {
+    "code": "RE",
+    "name": "Réunion",
+    "capital": "Saint-Denis",
+    "currency": "EUR",
+    "phone": "262"
+  },
+  {
+    "code": "RO",
+    "name": "Romania",
+    "capital": "Bucharest",
+    "currency": "RON",
+    "phone": "40"
+  },
+  {
+    "code": "RS",
+    "name": "Serbia",
+    "capital": "Belgrade",
+    "currency": "RSD",
+    "phone": "381"
+  },
+  {
+    "code": "RU",
+    "name": "Russia",
+    "capital": "Moscow",
+    "currency": "RUB",
+    "phone": "7"
+  },
+  {
+    "code": "RW",
+    "name": "Rwanda",
+    "capital": "Kigali",
+    "currency": "RWF",
+    "phone": "250"
+  },
+  {
+    "code": "SA",
+    "name": "Saudi Arabia",
+    "capital": "Riyadh",
+    "currency": "SAR",
+    "phone": "966"
+  },
+  {
+    "code": "SB",
+    "name": "Solomon Islands",
+    "capital": "Honiara",
+    "currency": "SBD",
+    "phone": "677"
+  },
+  {
+    "code": "SC",
+    "name": "Seychelles",
+    "capital": "Victoria",
+    "currency": "SCR",
+    "phone": "248"
+  },
+  {
+    "code": "SD",
+    "name": "Sudan",
+    "capital": "Khartoum",
+    "currency": "SDG",
+    "phone": "249"
+  },
+  {
+    "code": "SE",
+    "name": "Sweden",
+    "capital": "Stockholm",
+    "currency": "SEK",
+    "phone": "46"
+  },
+  {
+    "code": "SG",
+    "name": "Singapore",
+    "capital": "Singapore",
+    "currency": "SGD",
+    "phone": "65"
+  },
+  {
+    "code": "SH",
+    "name": "Saint Helena",
+    "capital": "Jamestown",
+    "currency": "SHP",
+    "phone": "290"
+  },
+  {
+    "code": "SI",
+    "name": "Slovenia",
+    "capital": "Ljubljana",
+    "currency": "EUR",
+    "phone": "386"
+  },
+  {
+    "code": "SJ",
+    "name": "Svalbard and Jan Mayen",
+    "capital": "Longyearbyen",
+    "currency": "NOK",
+    "phone": "4779"
+  },
+  {
+    "code": "SK",
+    "name": "Slovakia",
+    "capital": "Bratislava",
+    "currency": "EUR",
+    "phone": "421"
+  },
+  {
+    "code": "SL",
+    "name": "Sierra Leone",
+    "capital": "Freetown",
+    "currency": "SLL",
+    "phone": "232"
+  },
+  {
+    "code": "SM",
+    "name": "San Marino",
+    "capital": "City of San Marino",
+    "currency": "EUR",
+    "phone": "378"
+  },
+  {
+    "code": "SN",
+    "name": "Senegal",
+    "capital": "Dakar",
+    "currency": "XOF",
+    "phone": "221"
+  },
+  {
+    "code": "SO",
+    "name": "Somalia",
+    "capital": "Mogadishu",
+    "currency": "SOS",
+    "phone": "252"
+  },
+  {
+    "code": "SR",
+    "name": "Suriname",
+    "capital": "Paramaribo",
+    "currency": "SRD",
+    "phone": "597"
+  },
+  {
+    "code": "SS",
+    "name": "South Sudan",
+    "capital": "Juba",
+    "currency": "SSP",
+    "phone": "211"
+  },
+  {
+    "code": "ST",
+    "name": "São Tomé and Príncipe",
+    "capital": "São Tomé",
+    "currency": "STN",
+    "phone": "239"
+  },
+  {
+    "code": "SV",
+    "name": "El Salvador",
+    "capital": "San Salvador",
+    "currency": "SVC,USD",
+    "phone": "503"
+  },
+  {
+    "code": "SX",
+    "name": "Sint Maarten",
+    "capital": "Philipsburg",
+    "currency": "ANG",
+    "phone": "1721"
+  },
+  {
+    "code": "SY",
+    "name": "Syria",
+    "capital": "Damascus",
+    "currency": "SYP",
+    "phone": "963"
+  },
+  {
+    "code": "SZ",
+    "name": "Swaziland",
+    "capital": "Lobamba",
+    "currency": "SZL",
+    "phone": "268"
+  },
+  {
+    "code": "TC",
+    "name": "Turks and Caicos Islands",
+    "capital": "Cockburn Town",
+    "currency": "USD",
+    "phone": "1649"
+  },
+  {
+    "code": "TD",
+    "name": "Chad",
+    "capital": "N'Djamena",
+    "currency": "XAF",
+    "phone": "235"
+  },
+  {
+    "code": "TF",
+    "name": "French Southern Territories",
+    "capital": "Port-aux-Français",
+    "currency": "EUR",
+    "phone": "262"
+  },
+  {
+    "code": "TG",
+    "name": "Togo",
+    "capital": "Lomé",
+    "currency": "XOF",
+    "phone": "228"
+  },
+  {
+    "code": "TH",
+    "name": "Thailand",
+    "capital": "Bangkok",
+    "currency": "THB",
+    "phone": "66"
+  },
+  {
+    "code": "TJ",
+    "name": "Tajikistan",
+    "capital": "Dushanbe",
+    "currency": "TJS",
+    "phone": "992"
+  },
+  {
+    "code": "TK",
+    "name": "Tokelau",
+    "capital": "Fakaofo",
+    "currency": "NZD",
+    "phone": "690"
+  },
+  {
+    "code": "TL",
+    "name": "East Timor",
+    "capital": "Dili",
+    "currency": "USD",
+    "phone": "670"
+  },
+  {
+    "code": "TM",
+    "name": "Turkmenistan",
+    "capital": "Ashgabat",
+    "currency": "TMT",
+    "phone": "993"
+  },
+  {
+    "code": "TN",
+    "name": "Tunisia",
+    "capital": "Tunis",
+    "currency": "TND",
+    "phone": "216"
+  },
+  {
+    "code": "TO",
+    "name": "Tonga",
+    "capital": "Nuku'alofa",
+    "currency": "TOP",
+    "phone": "676"
+  },
+  {
+    "code": "TR",
+    "name": "Turkey",
+    "capital": "Ankara",
+    "currency": "TRY",
+    "phone": "90"
+  },
+  {
+    "code": "TT",
+    "name": "Trinidad and Tobago",
+    "capital": "Port of Spain",
+    "currency": "TTD",
+    "phone": "1868"
+  },
+  {
+    "code": "TV",
+    "name": "Tuvalu",
+    "capital": "Funafuti",
+    "currency": "AUD",
+    "phone": "688"
+  },
+  {
+    "code": "TW",
+    "name": "Taiwan",
+    "capital": "Taipei",
+    "currency": "TWD",
+    "phone": "886"
+  },
+  {
+    "code": "TZ",
+    "name": "Tanzania",
+    "capital": "Dodoma",
+    "currency": "TZS",
+    "phone": "255"
+  },
+  {
+    "code": "UA",
+    "name": "Ukraine",
+    "capital": "Kyiv",
+    "currency": "UAH",
+    "phone": "380"
+  },
+  {
+    "code": "UG",
+    "name": "Uganda",
+    "capital": "Kampala",
+    "currency": "UGX",
+    "phone": "256"
+  },
+  {
+    "code": "UM",
+    "name": "U.S. Minor Outlying Islands",
+    "capital": null,
+    "currency": "USD",
+    "phone": "1"
+  },
+  {
+    "code": "US",
+    "name": "United States",
+    "capital": "Washington D.C.",
+    "currency": "USD,USN,USS",
+    "phone": "1"
+  },
+  {
+    "code": "UY",
+    "name": "Uruguay",
+    "capital": "Montevideo",
+    "currency": "UYI,UYU",
+    "phone": "598"
+  },
+  {
+    "code": "UZ",
+    "name": "Uzbekistan",
+    "capital": "Tashkent",
+    "currency": "UZS",
+    "phone": "998"
+  },
+  {
+    "code": "VA",
+    "name": "Vatican City",
+    "capital": "Vatican City",
+    "currency": "EUR",
+    "phone": "379"
+  },
+  {
+    "code": "VC",
+    "name": "Saint Vincent and the Grenadines",
+    "capital": "Kingstown",
+    "currency": "XCD",
+    "phone": "1784"
+  },
+  {
+    "code": "VE",
+    "name": "Venezuela",
+    "capital": "Caracas",
+    "currency": "VES",
+    "phone": "58"
+  },
+  {
+    "code": "VG",
+    "name": "British Virgin Islands",
+    "capital": "Road Town",
+    "currency": "USD",
+    "phone": "1284"
+  },
+  {
+    "code": "VI",
+    "name": "U.S. Virgin Islands",
+    "capital": "Charlotte Amalie",
+    "currency": "USD",
+    "phone": "1340"
+  },
+  {
+    "code": "VN",
+    "name": "Vietnam",
+    "capital": "Hanoi",
+    "currency": "VND",
+    "phone": "84"
+  },
+  {
+    "code": "VU",
+    "name": "Vanuatu",
+    "capital": "Port Vila",
+    "currency": "VUV",
+    "phone": "678"
+  },
+  {
+    "code": "WF",
+    "name": "Wallis and Futuna",
+    "capital": "Mata-Utu",
+    "currency": "XPF",
+    "phone": "681"
+  },
+  {
+    "code": "WS",
+    "name": "Samoa",
+    "capital": "Apia",
+    "currency": "WST",
+    "phone": "685"
+  },
+  {
+    "code": "XK",
+    "name": "Kosovo",
+    "capital": "Pristina",
+    "currency": "EUR",
+    "phone": "377,381,383,386"
+  },
+  {
+    "code": "YE",
+    "name": "Yemen",
+    "capital": "Sana'a",
+    "currency": "YER",
+    "phone": "967"
+  },
+  {
+    "code": "YT",
+    "name": "Mayotte",
+    "capital": "Mamoudzou",
+    "currency": "EUR",
+    "phone": "262"
+  },
+  {
+    "code": "ZA",
+    "name": "South Africa",
+    "capital": "Pretoria",
+    "currency": "ZAR",
+    "phone": "27"
+  },
+  {
+    "code": "ZM",
+    "name": "Zambia",
+    "capital": "Lusaka",
+    "currency": "ZMW",
+    "phone": "260"
+  },
+  {
+    "code": "ZW",
+    "name": "Zimbabwe",
+    "capital": "Harare",
+    "currency": "USD,ZAR,BWP,GBP,AUD,CNY,INR,JPY",
+    "phone": "263"
+  }
+]
