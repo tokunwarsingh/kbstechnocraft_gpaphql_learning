@@ -1,0 +1,57 @@
+[
+  {
+    "code": "IN",
+    "states": [
+      { "code": "KA", "name": "Karnataka" },
+      { "code": "MH", "name": "Maharashtra" },
+      { "code": "TN", "name": "Tamil Nadu" },
+      { "code": "UP", "name": "Uttar Pradesh" },
+      { "code": "WB", "name": "West Bengal" },
+      { "code": "RJ", "name": "Rajasthan" }
+    ]
+  },
+  {
+    "code": "US",
+    "states": [
+      { "code": "CA", "name": "California" },
+      { "code": "TX", "name": "Texas" },
+      { "code": "NY", "name": "New York" },
+      { "code": "FL", "name": "Florida" },
+      { "code": "IL", "name": "Illinois" },
+      { "code": "PA", "name": "Pennsylvania" }
+    ]
+  },
+  {
+    "code": "AU",
+    "states": [
+      { "code": "NSW", "name": "New South Wales" },
+      { "code": "VIC", "name": "Victoria" },
+      { "code": "QLD", "name": "Queensland" },
+      { "code": "WA", "name": "Western Australia" },
+      { "code": "SA", "name": "South Australia" },
+      { "code": "TAS", "name": "Tasmania" }
+    ]
+  },
+  {
+    "code": "CA",
+    "states": [
+      { "code": "ON", "name": "Ontario" },
+      { "code": "QC", "name": "Quebec" },
+      { "code": "BC", "name": "British Columbia" },
+      { "code": "AB", "name": "Alberta" },
+      { "code": "MB", "name": "Manitoba" },
+      { "code": "NS", "name": "Nova Scotia" }
+    ]
+  },
+  {
+    "code": "DE",
+    "states": [
+      { "code": "BY", "name": "Bavaria" },
+      { "code": "NRW", "name": "North Rhine-Westphalia" },
+      { "code": "BW", "name": "Baden-Württemberg" },
+      { "code": "HE", "name": "Hesse" },
+      { "code": "SN", "name": "Saxony" },
+      { "code": "LS", "name": "Lower Saxony" }
+    ]
+  }
+]

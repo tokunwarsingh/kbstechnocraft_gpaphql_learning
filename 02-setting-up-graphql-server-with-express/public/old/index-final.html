@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL Client</title>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <h2>Countries List</h2>
+    <ul id="countries"></ul>
+
+    <h3>Add Country</h3>
+    <input type="text" id="code" placeholder="Country Code">
+    <input type="text" id="name" placeholder="Country Name">
+    <button onclick="addCountry()">Add</button>
+
+    <h3>Edit Country</h3>
+    <input type="text" id="editCode" placeholder="Country Code">
+    <input type="text" id="editName" placeholder="New Name">
+    <button onclick="editCountry()">Edit</button>
+
+    <h3>Delete Country</h3>
+    <input type="text" id="deleteCode" placeholder="Country Code">
+    <button onclick="deleteCountry()">Delete</button>
+</body>
+</html>

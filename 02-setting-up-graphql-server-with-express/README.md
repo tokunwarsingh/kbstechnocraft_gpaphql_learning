@@ -17,19 +17,19 @@ Make sure you have:
 
 ## 📦 Step 1: Initialize the Project
 
-###  
+```bash  
 mkdir graphql-server
 cd graphql-server
 npm init -y
-###
+```
 
 ---
 
 ## 📥 Step 2: Install Required Packages
 
-###  
+```bash  
 npm install express express-graphql graphql
-###
+```
 
 These packages do the following:
 
@@ -41,9 +41,9 @@ These packages do the following:
 
 ## 🛠️ Step 3: Create the Server
 
-Create a file named `index.js`:
+Create a file named `server.js`:
 
-###  
+```Javascript  
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const { buildSchema } = require("graphql");
@@ -71,15 +71,15 @@ app.use(
 app.listen(4000, () => {
   console.log("🚀 Server is running at http://localhost:4000/graphql");
 });
-###
+```
 
 ---
 
 ## 🧪 Step 4: Run the Server
 
-###  
-node index.js
-###
+```bash  
+node server.js
+```
 
 Open your browser and visit:
 
@@ -89,31 +89,31 @@ You’ll see **GraphiQL**, a powerful GraphQL playground.
 
 Try this query:
 
-###  
+```graphql  
 {
   hello
 }
-###
+```
 
 You should get:
 
-###  
+```graphql  
 {
   "data": {
     "hello": "Hello, GraphQL World!"
   }
 }
-###
+```
 
 ---
 
 ## 📊 Server Architecture
 
-###  
+```  
 +---------+          +-------------------+          +------------+
 | Client  | <------> | Express + GraphQL | <------> | Your Data  |
 +---------+          +-------------------+          +------------+
-###
+```
 
 - A client sends a query to `/graphql`.
 - Express passes it to the `graphqlHTTP` middleware.
@@ -123,12 +123,12 @@ You should get:
 
 ## 🧼 Folder Structure (Simple Version)
 
-###  
+```bash
 graphql-server/
 ├── index.js
 ├── package.json
 └── node_modules/
-###
+```
 
 ---
 
