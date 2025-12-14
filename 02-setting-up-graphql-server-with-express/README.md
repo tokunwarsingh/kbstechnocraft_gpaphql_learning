@@ -43,19 +43,33 @@ These packages do the following:
 
 Create a file named `server.js`:
 
-```Javascript  
+```javascript  
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const { buildSchema } = require("graphql");
 
+const fs = require("fs");
+const dataFile = "./data/countries.json";
+
+const loadData = () => JSON.parse(fs.readFileSync(dataFile, "utf-8"));
+
 const schema = buildSchema(`
   type Query {
     hello: String
+    hello_new: String
+    countries: [Country]
+  }
+    
+  type Country {
+    code: String!
+    name: String!
   }
 `);
 
 const root = {
-  hello: () => "Hello, GraphQL World!"
+  hello: () => "Hello, GraphQL World!",
+  hello_new: () => "Hello, new World!",
+  countries: () => loadData()
 };
 
 const app = express();
@@ -87,11 +101,26 @@ Open your browser and visit:
 
 You’ll see **GraphiQL**, a powerful GraphQL playground.
 
-Try this query:
+Try these queries:
 
 ```graphql  
 {
   hello
+}
+```
+
+```graphql
+{
+  hello_new
+}
+```
+
+```graphql
+{
+  countries {
+    code
+    name
+  }
 }
 ```
 
@@ -100,7 +129,22 @@ You should get:
 ```graphql  
 {
   "data": {
-    "hello": "Hello, GraphQL World!"
+    "hello": "Hello, GraphQL World!",
+    "hello_new": "Hello, new World!",
+    "countries": [
+      {
+        "code": "US",
+        "name": "United States"
+      },
+      {
+        "code": "CA",
+        "name": "Canada"
+      },
+      {
+        "code": "MX",
+        "name": "Mexico"
+      }
+    ]
   }
 }
 ```
@@ -121,16 +165,33 @@ You should get:
 
 ---
 
-## 🧼 Folder Structure (Simple Version)
+## 🧼 Folder Structure (Complete Version)
 
 ```bash
-graphql-server/
-├── index.js
-├── package.json
-└── node_modules/
+02-setting-up-graphql-server-with-express/
+├── data/
+│   └── countries.json
+├── graphql-server/
+│   ├── graphql/
+│   │   └── readme3
+│   ├── server.js
+│   └── package.json
+└── README.md
 ```
 
----
+## 📄 Step 5: Create the Data File (countries.json)
+
+Create a file named `countries.json` in the `data/` directory at the root level with sample data:
+
+```json
+[
+  {"code": "US", "name": "United States"},
+  {"code": "CA", "name": "Canada"},
+  {"code": "MX", "name": "Mexico"}
+]
+```
+
+This file provides sample country data for the `countries` query.
 
 ## 🧩 Key Concepts Used
 

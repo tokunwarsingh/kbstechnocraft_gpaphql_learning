@@ -3,7 +3,7 @@ const { graphqlHTTP } = require("express-graphql");
 const { buildSchema } = require("graphql");
 
 const fs = require("fs");
-const dataFile = "src/data/countries.json";
+const dataFile = "../data/countries.json";
 
 const loadData = () => JSON.parse(fs.readFileSync(dataFile, "utf-8"));
 
