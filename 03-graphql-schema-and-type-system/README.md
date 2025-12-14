@@ -1,6 +1,6 @@
 # Episode 3: Building Your First Schema with Custom Types
 
-Welcome to **Episode 3** of the GraphQL Mastery Course! Today, we’ll create custom types in your GraphQL schema and write resolvers to fetch data.
+Welcome to **Episode 3** of the GraphQL Mastery Course! Today, we'll create custom types in your GraphQL schema and write resolvers to fetch data from a real dataset.
 
 ---
 
@@ -14,75 +14,92 @@ Welcome to **Episode 3** of the GraphQL Mastery Course! Today, we’ll create cu
 
 ## 📦 Sample Data
 
-Let’s start with a simple list of users in memory:
+We'll use a countries dataset with information about countries around the world:
 
-###  
-const users = [
-  { id: "1", name: "Alice", email: "alice@example.com" },
-  { id: "2", name: "Bob", email: "bob@example.com" },
+```javascript
+const countries = [
+  {
+    "code": "AD",
+    "name": "Andorra",
+    "capital": "Andorra la Vella",
+    "currency": "EUR",
+    "phone": "376"
+  },
+  {
+    "code": "AE",
+    "name": "United Arab Emirates",
+    "capital": "Abu Dhabi",
+    "currency": "AED",
+    "phone": "971"
+  },
+  // ... more countries
 ];
-###
+```
 
 ---
 
-## 📜 Step 1: Update Schema with a User Type
+## 📜 Step 1: Update Schema with a Country Type
 
-Modify your schema to add a `User` type and a query to get all users:
+Modify your schema to add a `Country` type and a query to get all countries:
 
-###  
+```javascript
 const schema = buildSchema(`
-  type User {
-    id: ID
+  type Country {
+    code: ID
     name: String
-    email: String
+    capital: String
+    currency: String
+    phone: String
   }
 
   type Query {
-    users: [User]
+    countries: [Country]
   }
 `);
-###
+```
 
 ---
 
-## ⚙️ Step 2: Add Resolver for `users`
+## ⚙️ Step 2: Add Resolver for `countries`
 
-Implement resolver to return the users array:
+Implement resolver to return the countries array:
 
-###  
+```javascript
 const root = {
-  users: () => users,
+  countries: () => countries,
 };
-###
+```
 
 ---
 
-## 🔄 Step 3: Complete Server Code (index.js)
+## 🔄 Step 3: Complete Server Code (graphql-server/server.js)
 
-###  
+```javascript
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const { buildSchema } = require("graphql");
+const fs = require("fs");
+const path = require("path");
 
-const users = [
-  { id: "1", name: "Alice", email: "alice@example.com" },
-  { id: "2", name: "Bob", email: "bob@example.com" },
-];
+// Load countries data
+const countries = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/countries.json'), 'utf8'));
 
 const schema = buildSchema(`
-  type User {
-    id: ID
+  type Country {
+    code: ID
     name: String
-    email: String
+    capital: String
+    currency: String
+    phone: String
   }
 
   type Query {
-    users: [User]
+    countries: [Country]
   }
 `);
 
 const root = {
-  users: () => users,
+  countries: () => countries,
 };
 
 const app = express();
@@ -98,7 +115,7 @@ app.use(
 app.listen(4000, () => {
   console.log("🚀 Server running at http://localhost:4000/graphql");
 });
-###
+```
 
 ---
 
@@ -106,69 +123,77 @@ app.listen(4000, () => {
 
 Run your server:
 
-###  
-node index.js
-###
+```bash
+npm start
+```
 
 Open http://localhost:4000/graphql and run:
 
-###  
+```graphql
 {
-  users {
-    id
+  countries {
+    code
     name
-    email
+    capital
+    currency
+    phone
   }
 }
-###
+```
 
 Expected response:
 
-###  
+```json
 {
   "data": {
-    "users": [
+    "countries": [
       {
-        "id": "1",
-        "name": "Alice",
-        "email": "alice@example.com"
+        "code": "AD",
+        "name": "Andorra",
+        "capital": "Andorra la Vella",
+        "currency": "EUR",
+        "phone": "376"
       },
       {
-        "id": "2",
-        "name": "Bob",
-        "email": "bob@example.com"
+        "code": "AE",
+        "name": "United Arab Emirates",
+        "capital": "Abu Dhabi",
+        "currency": "AED",
+        "phone": "971"
       }
     ]
   }
 }
-###
+```
 
 ---
 
 ## 📊 Schema Diagram
 
-###  
+```
 Query
- └─ users: [User]
+ └─ countries: [Country]
 
-User
- ├─ id: ID
+Country
+ ├─ code: ID
  ├─ name: String
- └─ email: String
-###
+ ├─ capital: String
+ ├─ currency: String
+ └─ phone: String
+```
 
 ---
 
 ## 🧠 Summary
 
-- Created a `User` type with fields `id`, `name`, and `email`.  
-- Added a `users` query returning a list of users.  
-- Wrote a resolver to return in-memory data.  
+- Created a `Country` type with fields `code`, `name`, `capital`, `currency`, and `phone`.  
+- Added a `countries` query returning a list of countries.  
+- Wrote a resolver to return data from the countries dataset.  
 
 ---
 
 ## ▶️ Next Episode
 
-We’ll learn **how to add mutations** to create and update users!
+We'll learn **how to add mutations** to create and update countries!
 
 ➡️ Episode 4: Writing Mutations for Data Modification
