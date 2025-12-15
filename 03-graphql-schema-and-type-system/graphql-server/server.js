@@ -1,31 +1,16 @@
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
-const { buildSchema } = require("graphql");
-const fs = require("fs");
 const path = require("path");
 
-// Load countries data
-const countries = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/countries.json'), 'utf8'));
-
-const schema = buildSchema(`
-  type Country {
-    code: ID
-    name: String
-    capital: String
-    currency: String
-    phone: String
-  }
-
-  type Query {
-    countries: [Country]
-  }
-`);
-
-const root = {
-  countries: () => countries,
-};
+// Import schema and resolvers
+const schema = require("./graphql/schema");
+const root = require("./graphql/resolvers");
 
 const app = express();
+
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, '../public')));
+
 app.use(
   "/graphql",
   graphqlHTTP({
