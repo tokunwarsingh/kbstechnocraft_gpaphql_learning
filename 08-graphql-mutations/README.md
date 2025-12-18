@@ -1,136 +1,454 @@
-# Episode 8: Real-time Data with GraphQL Subscriptions
+# Episode 8: GraphQL Mutations
 
-Welcome to **Episode 8** of the GraphQL Mastery Course! Today, we'll learn how to implement **real-time data updates** using GraphQL Subscriptions.
+Welcome to **Episode 8** of the GraphQL Mastery Course! Today, we'll learn how to implement **mutations** in GraphQL - operations that modify data on the server.
 
 ---
 
 ## 🎯 Goals
 
-- Understand what subscriptions are  
-- Set up a basic subscription server  
-- Write a subscription schema and resolver  
-- Test real-time updates with subscriptions  
+- Understand what mutations are and when to use them
+- Learn to define mutation types in schema
+- Implement mutation resolvers
+- Handle input types and arguments
+- Test mutations with GraphiQL
 
 ---
 
-## 🔄 What Are Subscriptions?
+## 🔄 What Are Mutations?
 
-Subscriptions allow clients to **subscribe** to specific events and get notified immediately when data changes, enabling real-time functionality.
+Mutations are GraphQL operations that **modify data** on the server. Unlike queries which only read data, mutations can create, update, or delete data. They are essential for any application that needs to change data.
 
----
-
-## 🛠️ Step 1: Install Required Packages
-
-Subscriptions require WebSocket support. Install:
-
-###  
-npm install graphql-ws ws express express-graphql graphql
-###
+### Key Characteristics:
+- **Side Effects**: Mutations change server state
+- **Sequential**: Mutations execute in order
+- **Return Values**: Can return the modified data
+- **Error Handling**: Must handle failures gracefully
 
 ---
 
-## 📜 Step 2: Define Subscription in Schema
+## 📦 Data Overview
 
-Add a subscription type to notify new users added:
+We have JSON data for:
+- **Continents**: code, name, countries
+- **Countries**: code, name, capital, currency, phone
+- **Languages**: code, name, native, rtl
+- **States**: per country, code, name
 
-###  
-const schema = buildSchema(`
-  type User {
-    id: ID
-    name: String
-    email: String
+---
+
+## 📜 GraphQL Schema with Mutations
+
+Our schema includes both queries and mutations:
+
+```
+type Continent {
+  code: String
+  name: String
+  countries: [Country]
+  countryCount: Int
+}
+
+type Country {
+  code: String
+  name: String
+  capital: String
+  currency: String
+  phone: String
+  states: [State]
+  stateCount: Int
+  continent: Continent
+}
+
+type State {
+  code: String
+  name: String
+  country: Country
+}
+
+# Input types for mutations
+input CountryInput {
+  code: String!
+  name: String!
+  capital: String!
+  currency: String!
+  phone: String!
+}
+
+input ContinentInput {
+  code: String!
+  name: String!
+}
+
+input StateInput {
+  code: String!
+  name: String!
+  countryCode: String!
+}
+
+type Query {
+  continents: [Continent]
+  continent(code: String!): Continent
+  countries: [Country]
+  country(code: String!): Country
+  languages: [Language]
+  states(countryCode: String!): [State]
+}
+
+type Mutation {
+  createCountry(input: CountryInput!): Country
+  updateCountry(code: String!, input: CountryInput!): Country
+  deleteCountry(code: String!): Boolean
+
+  createContinent(input: ContinentInput!): Continent
+  updateContinent(code: String!, input: ContinentInput!): Continent
+  deleteContinent(code: String!): Boolean
+
+  createState(input: StateInput!): State
+  updateState(countryCode: String!, code: String!, name: String!): State
+  deleteState(countryCode: String!, code: String!): Boolean
+}
+```
+
+---
+
+## 🚀 Getting Started
+
+1. Install dependencies:
+   ```
+   npm install
+   ```
+
+2. Start the server:
+   ```
+   npm start
+   ```
+
+3. Open GraphiQL at http://localhost:4000/graphql
+
+4. View mutation examples at http://localhost:4000
+
+---
+
+## 🔧 Mutation Types
+
+### 1. Create Mutations
+
+Create new data entries:
+
+```javascript
+createCountry: ({ input }) => {
+  console.log(`Mutation: createCountry - Creating country: ${input.name}`);
+  const newCountry = {
+    code: input.code,
+    name: input.name,
+    capital: input.capital,
+    currency: input.currency,
+    phone: input.phone
+  };
+  countriesData.push(newCountry);
+  return newCountry;
+}
+```
+
+### 2. Update Mutations
+
+Modify existing data:
+
+```javascript
+updateCountry: ({ code, input }) => {
+  console.log(`Mutation: updateCountry - Updating country: ${code}`);
+  const countryIndex = countriesData.findIndex(c => c.code === code);
+  if (countryIndex === -1) {
+    throw new Error(`Country with code ${code} not found`);
   }
+  countriesData[countryIndex] = {
+    ...countriesData[countryIndex],
+    ...input
+  };
+  return countriesData[countryIndex];
+}
+```
 
-  type Query {
-    users: [User]
-  }
+### 3. Delete Mutations
 
-  type Mutation {
-    createUser(name: String!, email: String!): User
-  }
+Remove data entries:
 
-  type Subscription {
-    userCreated: User
+```javascript
+deleteCountry: ({ code }) => {
+  console.log(`Mutation: deleteCountry - Deleting country: ${code}`);
+  const countryIndex = countriesData.findIndex(c => c.code === code);
+  if (countryIndex === -1) {
+    throw new Error(`Country with code ${code} not found`);
   }
-`);
-###
+  countriesData.splice(countryIndex, 1);
+  return true;
+}
+```
 
 ---
 
-## ⚙️ Step 3: Implement Resolvers and PubSub
+## 🧪 Mutation Examples
 
-Since `graphql` package alone doesn’t support subscriptions, we’ll simulate using `graphql-ws` and a simple event emitter.
+### Create a Country
 
-###  
-const { EventEmitter } = require("events");
-const pubsub = new EventEmitter();
-
-const users = [
-  { id: "1", name: "Alice", email: "alice@example.com" },
-];
-
-const root = {
-  users: () => users,
-
-  createUser: ({ name, email }) => {
-    const newUser = {
-      id: String(users.length + 1),
-      name,
-      email,
-    };
-    users.push(newUser);
-    pubsub.emit("USER_CREATED", newUser);
-    return newUser;
-  },
-
-  userCreated: {
-    subscribe: (callback) => {
-      pubsub.on("USER_CREATED", callback);
-    },
-  },
-};
-###
-
----
-
-## 🛠️ Step 4: Set Up Server with WebSocket
-
-This step requires advanced setup with `graphql-ws` server — outside the scope of simple `express-graphql`.
-
-For demo, use libraries like `apollo-server` or `graphql-yoga` which have built-in subscriptions support.
-
----
-
-## 🧪 Step 5: Testing Subscriptions
-
-Use GraphQL clients like Apollo Studio, GraphQL Playground, or Insomnia to test subscriptions:
-
-Subscription query example:
-
-###  
-subscription {
-  userCreated {
-    id
+```graphql
+mutation {
+  createCountry(input: {
+    code: "XX"
+    name: "Test Country"
+    capital: "Test City"
+    currency: "TST"
+    phone: "999"
+  }) {
+    code
     name
-    email
+    capital
   }
 }
-###
+```
 
-Trigger `createUser` mutation to see real-time updates.
+### Update a Country
+
+```graphql
+mutation {
+  updateCountry(code: "XX", input: {
+    name: "Updated Test Country"
+    capital: "Updated City"
+  }) {
+    code
+    name
+    capital
+  }
+}
+```
+
+### Delete a Country
+
+```graphql
+mutation {
+  deleteCountry(code: "XX")
+}
+```
+
+### Create a State
+
+```graphql
+mutation {
+  createState(input: {
+    code: "TS"
+    name: "Test State"
+    countryCode: "US"
+  }) {
+    code
+    name
+  }
+}
+```
+
+### Multiple Mutations
+
+```graphql
+mutation {
+  createCountry: createCountry(input: {
+    code: "ZZ"
+    name: "Another Test Country"
+    capital: "Another City"
+    currency: "ZZZ"
+    phone: "000"
+  }) {
+    code
+    name
+  }
+  createContinent: createContinent(input: {
+    code: "ZZC"
+    name: "Another Test Continent"
+  }) {
+    code
+    name
+  }
+}
+```
+
+---
+
+## 📊 Mutation Flow
+
+```
+Client
+  ↓ sends mutation request
+GraphQL Server
+  ↓ validates mutation
+  ↓ executes mutation resolver
+Data Store (in-memory array)
+  ↑ modifies data
+GraphQL Server
+  ↑ returns mutation result
+Client
+  ↓ updates UI with result
+```
+
+---
+
+## 🧠 Mutation Best Practices
+
+### 1. Use Input Types
+
+```graphql
+input CountryInput {
+  code: String!
+  name: String!
+  capital: String!
+  currency: String!
+  phone: String!
+}
+```
+
+### 2. Validate Input
+
+```javascript
+createCountry: ({ input }) => {
+  if (!input.code || !input.name) {
+    throw new Error('Code and name are required');
+  }
+  // ... rest of logic
+}
+```
+
+### 3. Handle Errors
+
+```javascript
+updateCountry: ({ code, input }) => {
+  const country = countriesData.find(c => c.code === code);
+  if (!country) {
+    throw new Error(`Country with code ${code} not found`);
+  }
+  // ... update logic
+}
+```
+
+### 4. Return Meaningful Data
+
+```javascript
+// Good: return the modified object
+return updatedCountry;
+
+// Bad: return true/false only
+return true;
+```
+
+### 5. Use Descriptive Names
+
+```javascript
+// Good
+createUser, updateUser, deleteUser
+
+// Bad
+doUser, modifyUser, removeUser
+```
+
+---
+
+## 🔍 Input Types vs Regular Types
+
+### Input Types
+- Used for mutation arguments
+- Can only contain scalar fields and other input types
+- Cannot have resolvers
+- Defined with `input` keyword
+
+### Regular Types
+- Used for query/mutation return values
+- Can have complex fields and relationships
+- Can have resolvers
+- Defined with `type` keyword
+
+---
+
+## 🧪 Testing Mutations
+
+### Success Case
+
+```javascript
+// Test creating a country
+const result = await graphql(schema, `
+  mutation {
+    createCountry(input: {
+      code: "XX"
+      name: "Test Country"
+      capital: "Test City"
+      currency: "TST"
+      phone: "999"
+    }) {
+      code
+      name
+    }
+  }
+`, root);
+
+expect(result.data.createCountry.code).toBe("XX");
+```
+
+### Error Case
+
+```javascript
+// Test updating non-existent country
+const result = await graphql(schema, `
+  mutation {
+    updateCountry(code: "INVALID", input: {
+      name: "Updated Name"
+    }) {
+      code
+    }
+  }
+`, root);
+
+expect(result.errors[0].message).toContain("not found");
+```
+
+---
+
+## 📈 Advanced Mutation Patterns
+
+### Optimistic Updates
+
+Update UI immediately, then sync with server.
+
+### Batch Mutations
+
+```javascript
+mutation BatchUpdate($updates: [CountryUpdate!]!) {
+  updateCountries(updates: $updates) {
+    code
+    name
+  }
+}
+```
+
+### Conditional Mutations
+
+```javascript
+mutation UpdateIfExists($code: String!, $input: CountryInput!) {
+  updateCountry(code: $code, input: $input) {
+    code
+    name
+  }
+}
+```
 
 ---
 
 ## 🧠 Summary
 
-- Subscriptions enable real-time updates  
-- Require WebSocket and event system setup  
-- More complex than queries/mutations, usually use advanced libraries  
+- Mutations modify server data
+- Use input types for arguments
+- Return modified data when possible
+- Handle errors appropriately
+- Test both success and failure cases
 
 ---
 
 ## ▶️ Next Episode
 
-Next, we will cover **Error Handling and Validation in GraphQL**.
+We’ll explore **input types and arguments** in more detail!
 
-➡️ Episode 9: Error Handling and Validation in GraphQL
+➡️ Episode 9: Input Types and Arguments

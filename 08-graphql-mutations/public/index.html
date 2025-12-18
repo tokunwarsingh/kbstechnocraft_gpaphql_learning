@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL Mutations</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        .mutation-section { margin-bottom: 30px; border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
+        .mutation-title { font-weight: bold; color: #007acc; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 3px; overflow-x: auto; }
+        .response { margin-top: 10px; }
+        .mutation-type { background: #e8f4fd; padding: 5px; margin: 5px 0; border-radius: 3px; }
+        #output { margin-top: 30px; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>GraphQL Mutations</h1>
+    <p>This page demonstrates different types of GraphQL mutations using the JSON data.</p>
+
+    <div id="output"></div>
+
+    <div class="mutation-section">
+        <div class="mutation-title">1. Create Mutation</div>
+        <div class="mutation-type">Type: Create Operation</div>
+        <p>Creates a new country in the data.</p>
+        <pre><code>mutation {
+  createCountry(input: {
+    code: "XX"
+    name: "Test Country"
+    capital: "Test City"
+    currency: "TST"
+    phone: "999"
+  }) {
+    code
+    name
+    capital
+  }
+}</code></pre>
+    </div>
+
+    <div class="mutation-section">
+        <div class="mutation-title">2. Update Mutation</div>
+        <div class="mutation-type">Type: Update Operation</div>
+        <p>Updates an existing country's information.</p>
+        <pre><code>mutation {
+  updateCountry(code: "XX", input: {
+    name: "Updated Test Country"
+    capital: "Updated City"
+  }) {
+    code
+    name
+    capital
+  }
+}</code></pre>
+    </div>
+
+    <div class="mutation-section">
+        <div class="mutation-title">3. Delete Mutation</div>
+        <div class="mutation-type">Type: Delete Operation</div>
+        <p>Deletes a country from the data.</p>
+        <pre><code>mutation {
+  deleteCountry(code: "XX")
+}</code></pre>
+    </div>
+
+    <div class="mutation-section">
+        <div class="mutation-title">4. Create Continent</div>
+        <div class="mutation-type">Type: Create Operation</div>
+        <p>Creates a new continent.</p>
+        <pre><code>mutation {
+  createContinent(input: {
+    code: "YY"
+    name: "Test Continent"
+  }) {
+    code
+    name
+  }
+}</code></pre>
+    </div>
+
+    <div class="mutation-section">
+        <div class="mutation-title">5. Create State</div>
+        <div class="mutation-type">Type: Create Operation</div>
+        <p>Creates a new state for a country.</p>
+        <pre><code>mutation {
+  createState(input: {
+    code: "TS"
+    name: "Test State"
+    countryCode: "US"
+  }) {
+    code
+    name
+  }
+}</code></pre>
+    </div>
+
+    <div class="mutation-section">
+        <div class="mutation-title">6. Update State</div>
+        <div class="mutation-type">Type: Update Operation</div>
+        <p>Updates a state's name.</p>
+        <pre><code>mutation {
+  updateState(countryCode: "US", code: "TS", name: "Updated Test State") {
+    code
+    name
+  }
+}</code></pre>
+    </div>
+
+    <div class="mutation-section">
+        <div class="mutation-title">7. Delete State</div>
+        <div class="mutation-type">Type: Delete Operation</div>
+        <p>Deletes a state from a country.</p>
+        <pre><code>mutation {
+  deleteState(countryCode: "US", code: "TS")
+}</code></pre>
+    </div>
+
+    <div class="mutation-section">
+        <div class="mutation-title">8. Multiple Mutations</div>
+        <div class="mutation-type">Type: Batch Operations</div>
+        <p>Performs multiple mutations in one request.</p>
+        <pre><code>mutation {
+  createCountry: createCountry(input: {
+    code: "ZZ"
+    name: "Another Test Country"
+    capital: "Another City"
+    currency: "ZZZ"
+    phone: "000"
+  }) {
+    code
+    name
+  }
+  createContinent: createContinent(input: {
+    code: "ZZC"
+    name: "Another Test Continent"
+  }) {
+    code
+    name
+  }
+}</code></pre>
+    </div>
+
+    <p><strong>Note:</strong> Open GraphiQL at <a href="http://localhost:4000/graphql" target="_blank">http://localhost:4000/graphql</a> to test these mutations. Check the server console for mutation execution logs. Changes are in-memory and will reset when the server restarts.</p>
+
+    <script src="script.js"></script>
+</body>
+</html>
