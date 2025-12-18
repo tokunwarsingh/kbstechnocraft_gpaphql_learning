@@ -1,163 +1,390 @@
-# Episode 5: Using Arguments and Variables in Queries
+# Episode 5: Understanding Resolvers
 
-Welcome to **Episode 5** of the GraphQL Mastery Course! Today, we'll learn how to use **arguments** and **variables** in GraphQL queries for more dynamic data fetching.
+Welcome to **Episode 5** of the GraphQL Mastery Course! Today, we'll dive deep into **GraphQL resolvers** - the functions that fetch the data for each field in your schema.
 
 ---
 
 ## 🎯 Goals
 
-- Understand how to pass arguments to queries  
-- Learn to use variables for safer, reusable queries  
-- Implement argument handling in resolvers  
+- Understand what resolvers are and how they work
+- Learn different types of resolvers
+- Implement resolvers for queries and fields
+- Handle arguments and context in resolvers
 
 ---
 
-## 🔍 Query Arguments
+## 🔍 What Are Resolvers?
 
-Arguments allow you to filter or customize data in queries.
+Resolvers are functions that tell GraphQL how to fetch the data for each field in your schema. Every field in your GraphQL schema has a corresponding resolver function.
 
-Example: Fetch a user by ID.
+### Resolver Function Signature
 
----
+```javascript
+fieldName: (parent, args, context, info) => {
+  // Return the data for this field
+}
+```
 
-## 📜 Step 1: Update Schema to Accept Arguments
-
-Add a `user` query that takes an `id` argument and returns a single User:
-
-###  
-const schema = buildSchema(`
-  type User {
-    id: ID
-    name: String
-    email: String
-  }
-
-  type Query {
-    users: [User]
-    user(id: ID!): User
-  }
-
-  type Mutation {
-    createUser(name: String!, email: String!): User
-    updateUserEmail(id: ID!, email: String!): User
-  }
-`);
-###
+- **parent**: The result of the parent field's resolver
+- **args**: Arguments passed to the field
+- **context**: Shared context across resolvers
+- **info**: Information about the query execution
 
 ---
 
-## ⚙️ Step 2: Add Resolver for `user(id: ID!)`
+## 📦 Data Overview
 
-###  
+We have JSON data for:
+- **Continents**: code, name, countries
+- **Countries**: code, name, capital, currency, phone
+- **Languages**: code, name, native, rtl
+- **States**: per country, code, name
+
+---
+
+## 📜 GraphQL Schema
+
+Our schema defines types and queries:
+
+```
+type Continent {
+  code: String
+  name: String
+  countries: [Country]
+  countryCount: Int
+}
+
+type Country {
+  code: String
+  name: String
+  capital: String
+  currency: String
+  phone: String
+  states: [State]
+  stateCount: Int
+  continent: Continent
+}
+
+type Language {
+  code: String
+  name: String
+  native: String
+  rtl: Boolean
+}
+
+type State {
+  code: String
+  name: String
+  country: Country
+}
+
+type Query {
+  continents: [Continent]
+  continent(code: String!): Continent
+  countries: [Country]
+  country(code: String!): Country
+  languages: [Language]
+  language(code: String!): Language
+  states(countryCode: String!): [State]
+  searchCountries(search: String!): [Country]
+}
+```
+
+---
+
+## 🚀 Getting Started
+
+1. Install dependencies:
+   ```
+   npm install
+   ```
+
+2. Start the server:
+   ```
+   npm start
+   ```
+
+3. Open GraphiQL at http://localhost:4000/graphql
+
+4. View resolver examples at http://localhost:4000
+
+---
+
+## 🔧 Types of Resolvers
+
+### 1. Root Query Resolvers
+
+Resolve top-level queries defined in the Query type.
+
+```javascript
 const root = {
-  users: () => users,
-
-  user: ({ id }) => users.find(user => user.id === id),
-
-  createUser: ({ name, email }) => {
-    const newUser = {
-      id: String(users.length + 1),
-      name,
-      email,
-    };
-    users.push(newUser);
-    return newUser;
+  continents: () => {
+    console.log('Resolver: continents - Returning all continents');
+    return continentsData;
   },
 
-  updateUserEmail: ({ id, email }) => {
-    const user = users.find((u) => u.id === id);
-    if (!user) {
-      throw new Error("User not found");
-    }
-    user.email = email;
-    return user;
-  },
+  continent: ({ code }) => {
+    console.log(`Resolver: continent - Finding continent with code: ${code}`);
+    return continentsData.find(c => c.code === code);
+  }
 };
-###
+```
+
+### 2. Field Resolvers
+
+Resolve fields on specific types (not Query).
+
+```javascript
+root.Continent = {
+  countries: (continent) => {
+    console.log(`Field Resolver: Continent.countries - Resolving countries for ${continent.name}`);
+    return continent.countries.map(country => countriesData.find(c => c.code === country.code)).filter(Boolean);
+  }
+};
+```
+
+### 3. Computed Field Resolvers
+
+Resolve fields that don't exist in the data but are computed.
+
+```javascript
+root.Continent = {
+  countryCount: (continent) => {
+    console.log(`Computed Resolver: Continent.countryCount - Counting countries for ${continent.name}`);
+    return continent.countries.length;
+  }
+};
+```
+
+### 4. Relationship Resolvers
+
+Resolve relationships between types.
+
+```javascript
+root.Country = {
+  continent: (country) => {
+    console.log(`Relationship Resolver: Country.continent - Finding continent for ${country.name}`);
+    return continentsData.find(cont =>
+      cont.countries.some(c => c.code === country.code)
+    );
+  }
+};
+```
+
+### 5. Search/Filter Resolvers
+
+Resolve complex queries with filtering logic.
+
+```javascript
+root = {
+  searchCountries: ({ search }) => {
+    console.log(`Search Resolver: searchCountries - Searching countries with: ${search}`);
+    return countriesData.filter(country =>
+      country.name.toLowerCase().includes(search.toLowerCase()) ||
+      country.capital.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+};
+```
 
 ---
 
-## 🧪 Step 3: Test Query with Arguments
+## 🧪 Resolver Examples
 
-Try this query in GraphiQL:
+### Root Query Resolver
 
-###  
-{
-  user(id: "1") {
-    id
+```javascript
+query {
+  continents {
     name
-    email
   }
 }
-###
+```
 
-Expected result:
+### Field Resolver
 
-###  
-{
-  "data": {
-    "user": {
-      "id": "1",
-      "name": "Alice",
-      "email": "alice_new@example.com"
+```javascript
+query {
+  continents {
+    name
+    countries {
+      name
     }
   }
 }
-###
+```
 
----
+### Computed Field Resolver
 
-## 💡 Step 4: Using Variables for Queries
-
-Variables make queries reusable and secure.
-
-Example query with variables:
-
-###  
-query GetUser($userId: ID!) {
-  user(id: $userId) {
-    id
+```javascript
+query {
+  continents {
     name
-    email
+    countryCount
   }
 }
-###
+```
 
-In GraphiQL, provide variables JSON:
+### Relationship Resolver
 
-###  
-{
-  "userId": "2"
+```javascript
+query {
+  country(code: "US") {
+    name
+    continent {
+      name
+    }
+  }
 }
-###
+```
+
+### Search Resolver
+
+```javascript
+query {
+  searchCountries(search: "united") {
+    name
+    capital
+  }
+}
+```
 
 ---
 
-## 📊 Query Flow with Arguments & Variables
+## 📊 Resolver Execution Flow
 
-###  
-Client
-  ├─ Sends query with variables
-GraphQL Server
-  ├─ Parses query & variables
-  ├─ Calls resolver with arguments
-  ├─ Returns filtered data
-Client
-  └─ Receives response data
-###
+```
+Query: continents { name countries { name } }
+
+1. continents (Root Query Resolver)
+   ↓
+2. name (Default Resolver - returns parent.name)
+   ↓
+3. countries (Field Resolver on Continent)
+   ↓
+4. name (Default Resolver - returns parent.name)
+```
 
 ---
 
-## 🧠 Summary
+## 🧠 Resolver Best Practices
 
-- Arguments allow filtering data in queries  
-- Variables make queries reusable and secure  
-- Resolvers receive arguments to fetch precise data  
+### 1. Handle Errors
+
+```javascript
+continent: ({ code }) => {
+  const continent = continentsData.find(c => c.code === code);
+  if (!continent) {
+    throw new Error(`Continent with code ${code} not found`);
+  }
+  return continent;
+}
+```
+
+### 2. Use Context for Shared Data
+
+```javascript
+// In server.js
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  context: { user: req.user, db: databaseConnection },
+  graphiql: true
+}));
+
+// In resolver
+countries: (parent, args, context) => {
+  if (!context.user) {
+    throw new Error('Authentication required');
+  }
+  return countriesData;
+}
+```
+
+### 3. Optimize with DataLoader
+
+For batching and caching database queries.
+
+### 4. Avoid Over-fetching
+
+Only fetch what's requested.
+
+### 5. Handle Circular References
+
+Be careful with bidirectional relationships.
+
+---
+
+## 🔍 Default Resolvers
+
+GraphQL provides default resolvers for simple fields:
+
+```javascript
+// This resolver is automatically provided
+name: (parent) => parent.name
+```
+
+---
+
+## 📈 Advanced Resolver Patterns
+
+### Resolver Composition
+
+```javascript
+const withAuth = (resolver) => (parent, args, context) => {
+  if (!context.user) throw new Error('Not authenticated');
+  return resolver(parent, args, context);
+};
+
+const root = {
+  countries: withAuth(() => countriesData)
+};
+```
+
+### Resolver Middleware
+
+```javascript
+const logResolver = (resolver, fieldName) => (parent, args, context) => {
+  console.log(`Resolving ${fieldName}`);
+  const result = resolver(parent, args, context);
+  console.log(`Resolved ${fieldName}:`, result);
+  return result;
+};
+```
+
+---
+
+## 🧪 Testing Resolvers
+
+### Unit Testing
+
+```javascript
+const { graphql } = require('graphql');
+
+describe('Resolvers', () => {
+  it('should resolve continents', async () => {
+    const query = '{ continents { name } }';
+    const result = await graphql(schema, query, root);
+    expect(result.data.continents).toBeDefined();
+  });
+});
+```
+
+---
+
+## 📊 Summary
+
+- Resolvers fetch data for each field
+- Root resolvers handle Query/Mutation fields
+- Field resolvers handle type fields
+- Computed resolvers create derived data
+- Relationship resolvers link types
+- Context shares data across resolvers
 
 ---
 
 ## ▶️ Next Episode
 
-We will learn how to use **GraphQL Enums and Custom Scalars**!
+We’ll explore **nested queries and aliases**!
 
-➡️ Episode 6: Using Enums and Custom Scalars in GraphQL
+➡️ Episode 6: Nested Queries and Aliases

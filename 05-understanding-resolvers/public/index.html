@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding GraphQL Resolvers</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        .resolver-section { margin-bottom: 30px; border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
+        .resolver-title { font-weight: bold; color: #007acc; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 3px; overflow-x: auto; }
+        .response { margin-top: 10px; }
+        .resolver-type { background: #e8f4fd; padding: 5px; margin: 5px 0; border-radius: 3px; }
+        #output { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Understanding GraphQL Resolvers</h1>
+    <p>This page demonstrates different types of GraphQL resolvers using the JSON data.</p>
+
+    <div id="output"></div>
+
+    <div class="resolver-section">
+        <div class="resolver-title">1. Root Query Resolver</div>
+        <div class="resolver-type">Type: Query Resolver</div>
+        <p>Resolves top-level queries like <code>continents</code>, <code>countries</code>, etc.</p>
+        <pre><code>query {
+  continents {
+    name
+  }
+}</code></pre>
+    </div>
+
+    <div class="resolver-section">
+        <div class="resolver-title">2. Query Resolver with Arguments</div>
+        <div class="resolver-type">Type: Query Resolver</div>
+        <p>Resolves queries that take arguments like <code>continent(code: "AF")</code>.</p>
+        <pre><code>query {
+  continent(code: "AF") {
+    name
+  }
+}</code></pre>
+    </div>
+
+    <div class="resolver-section">
+        <div class="resolver-title">3. Field Resolver</div>
+        <div class="resolver-type">Type: Field Resolver</div>
+        <p>Resolves fields on types, like <code>countries</code> field on <code>Continent</code> type.</p>
+        <pre><code>query {
+  continents {
+    name
+    countries {
+      name
+    }
+  }
+}</code></pre>
+    </div>
+
+    <div class="resolver-section">
+        <div class="resolver-title">4. Computed Field Resolver</div>
+        <div class="resolver-type">Type: Field Resolver</div>
+        <p>Resolves computed fields like <code>countryCount</code> that don't exist in the data.</p>
+        <pre><code>query {
+  continents {
+    name
+    countryCount
+  }
+}</code></pre>
+    </div>
+
+    <div class="resolver-section">
+        <div class="resolver-title">5. Reverse Relationship Resolver</div>
+        <div class="resolver-type">Type: Field Resolver</div>
+        <p>Resolves relationships in reverse, like finding continent from country.</p>
+        <pre><code>query {
+  country(code: "US") {
+    name
+    continent {
+      name
+    }
+  }
+}</code></pre>
+    </div>
+
+    <div class="resolver-section">
+        <div class="resolver-title">6. Search Resolver</div>
+        <div class="resolver-type">Type: Query Resolver</div>
+        <p>Resolves complex queries like searching/filtering data.</p>
+        <pre><code>query {
+  searchCountries(search: "united") {
+    name
+    capital
+  }
+}</code></pre>
+    </div>
+
+    <div class="resolver-section">
+        <div class="resolver-title">7. Nested Field Resolver</div>
+        <div class="resolver-type">Type: Field Resolver</div>
+        <p>Resolves deeply nested fields with their own resolvers.</p>
+        <pre><code>query {
+  continents {
+    name
+    countries {
+      name
+      stateCount
+      states {
+        name
+      }
+    }
+  }
+}</code></pre>
+    </div>
+
+    <p><strong>Note:</strong> Open GraphiQL at <a href="http://localhost:4000/graphql" target="_blank">http://localhost:4000/graphql</a> to test these resolvers. Check the server console for resolver execution logs.</p>
+
+    <script src="script.js"></script>
+</body>
+</html>
