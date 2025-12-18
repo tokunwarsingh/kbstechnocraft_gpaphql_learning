@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL Query Examples</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        .query-section { margin-bottom: 30px; border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
+        .query-title { font-weight: bold; color: #007acc; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 3px; overflow-x: auto; }
+        .response { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>GraphQL Query Examples</h1>
+    <p>This page demonstrates different types of GraphQL queries using the JSON data.</p>
+
+    <div class="query-section">
+        <div class="query-title">1. Simple Query - Get All Continents</div>
+        <pre><code>query {
+  continents {
+    code
+    name
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">2. Query with Arguments - Get Specific Continent</div>
+        <pre><code>query {
+  continent(code: "AF") {
+    name
+    code
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">3. Nested Query - Continents with Countries</div>
+        <pre><code>query {
+  continents {
+    name
+    countries {
+      name
+      capital
+    }
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">4. Query with Aliases - Multiple Continents</div>
+        <pre><code>query {
+  africa: continent(code: "AF") {
+    name
+  }
+  europe: continent(code: "EU") {
+    name
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">5. Fragment - Reusable Fields</div>
+        <pre><code>fragment CountryFields on Country {
+  name
+  capital
+  currency
+}
+
+query {
+  countries {
+    ...CountryFields
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">6. Query with Variables</div>
+        <pre><code>query GetContinent($code: String!) {
+  continent(code: $code) {
+    name
+    countries {
+      name
+    }
+  }
+}</code></pre>
+        <p>Variables: <code>{"code": "AS"}</code></p>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">7. Query with Directives</div>
+        <pre><code>query GetContinents($includeCountries: Boolean!) {
+  continents {
+    name
+    countries @include(if: $includeCountries) {
+      name
+    }
+  }
+}</code></pre>
+        <p>Variables: <code>{"includeCountries": true}</code></p>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">8. Get All Countries</div>
+        <pre><code>query {
+  countries {
+    code
+    name
+    capital
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">9. Get Country with States</div>
+        <pre><code>query {
+  country(code: "US") {
+    name
+    states {
+      name
+    }
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">10. Get Languages</div>
+        <pre><code>query {
+  languages {
+    code
+    name
+    native
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">11. Get States for a Country</div>
+        <pre><code>query {
+  states(countryCode: "IN") {
+    code
+    name
+  }
+}</code></pre>
+    </div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL Query Examples</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        .query-section { margin-bottom: 30px; border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
+        .query-title { font-weight: bold; color: #007acc; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 3px; overflow-x: auto; }
+        .response { margin-top: 10px; }
+        #output { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>GraphQL Query Examples</h1>
+    <p>This page demonstrates different types of GraphQL queries using the JSON data.</p>
+
+    <div id="output"></div>
+
+    <div class="query-section">
+        <div class="query-title">1. Simple Query - Get All Continents</div>
+        <pre><code>query {
+  continents {
+    code
+    name
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">2. Query with Arguments - Get Specific Continent</div>
+        <pre><code>query {
+  continent(code: "AF") {
+    name
+    code
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">3. Nested Query - Continents with Countries</div>
+        <pre><code>query {
+  continents {
+    name
+    countries {
+      name
+      capital
+    }
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">4. Query with Aliases - Multiple Continents</div>
+        <pre><code>query {
+  africa: continent(code: "AF") {
+    name
+  }
+  europe: continent(code: "EU") {
+    name
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">5. Fragment - Reusable Fields</div>
+        <pre><code>fragment CountryFields on Country {
+  name
+  capital
+  currency
+}
+
+query {
+  countries {
+    ...CountryFields
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">6. Query with Variables</div>
+        <pre><code>query GetContinent($code: String!) {
+  continent(code: $code) {
+    name
+    countries {
+      name
+    }
+  }
+}</code></pre>
+        <p>Variables: <code>{"code": "AS"}</code></p>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">7. Query with Directives</div>
+        <pre><code>query GetContinents($includeCountries: Boolean!) {
+  continents {
+    name
+    countries @include(if: $includeCountries) {
+      name
+    }
+  }
+}</code></pre>
+        <p>Variables: <code>{"includeCountries": true}</code></p>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">8. Get All Countries</div>
+        <pre><code>query {
+  countries {
+    code
+    name
+    capital
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">9. Get Country with States</div>
+        <pre><code>query {
+  country(code: "US") {
+    name
+    states {
+      name
+    }
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">10. Get Languages</div>
+        <pre><code>query {
+  languages {
+    code
+    name
+    native
+  }
+}</code></pre>
+    </div>
+
+    <div class="query-section">
+        <div class="query-title">11. Get States for a Country</div>
+        <pre><code>query {
+  states(countryCode: "IN") {
+    code
+    name
+  }
+}</code></pre>
+    </div>
+
+    <p><strong>Note:</strong> Open GraphiQL at <a href="http://localhost:4000/graphql" target="_blank">http://localhost:4000/graphql</a> to test these queries.</p>
+
+    <script src="script.js"></script>
+</body>
+</html>

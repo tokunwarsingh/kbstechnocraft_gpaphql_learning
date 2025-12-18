@@ -1,213 +1,296 @@
-# Episode 4: Writing Mutations for Data Modification
+# Episode 4: Writing Your First Query
 
-Welcome to **Episode 4** of the GraphQL Mastery Course! Today we’ll add **mutations** to create and update data.
+Welcome to **Episode 4** of the GraphQL Mastery Course! Today we’ll learn how to write **queries** in GraphQL using real JSON data.
 
 ---
 
 ## 🎯 Goals
 
-- Understand what mutations are in GraphQL  
-- Define mutation types in schema  
-- Implement resolvers to modify in-memory data  
+- Understand GraphQL query structure
+- Learn different types of queries: simple, with arguments, nested, aliases
+- Use the JSON data from the data folder
 
 ---
 
-## 🔄 What Are Mutations?
+## 📦 Data Overview
 
-Mutations are GraphQL’s way to perform **create**, **update**, or **delete** operations — basically anything that changes data.
-
----
-
-## 📦 Sample Data (from last episode)
-
-###  
-const users = [
-  { id: "1", name: "Alice", email: "alice@example.com" },
-  { id: "2", name: "Bob", email: "bob@example.com" },
-];
-###
+We have JSON data for:
+- **Continents**: code, name, countries
+- **Countries**: code, name, capital, currency, phone
+- **Languages**: code, name, native, rtl
+- **States**: per country, code, name
 
 ---
 
-## 📜 Step 1: Update Schema for Mutations
+## 📜 GraphQL Schema
 
-Add mutations to create a user and update a user’s email:
+Our schema defines types and queries:
 
-###  
-const schema = buildSchema(`
-  type User {
-    id: ID
-    name: String
-    email: String
-  }
+```
+type Continent {
+  code: String
+  name: String
+  countries: [Country]
+}
 
-  type Query {
-    users: [User]
-  }
+type Country {
+  code: String
+  name: String
+  capital: String
+  currency: String
+  phone: String
+  states: [State]
+}
 
-  type Mutation {
-    createUser(name: String!, email: String!): User
-    updateUserEmail(id: ID!, email: String!): User
-  }
-`);
-###
+type Language {
+  code: String
+  name: String
+  native: String
+  rtl: Boolean
+}
 
----
+type State {
+  code: String
+  name: String
+}
 
-## ⚙️ Step 2: Implement Mutation Resolvers
-
-###  
-const root = {
-  users: () => users,
-
-  createUser: ({ name, email }) => {
-    const newUser = {
-      id: String(users.length + 1),
-      name,
-      email,
-    };
-    users.push(newUser);
-    return newUser;
-  },
-
-  updateUserEmail: ({ id, email }) => {
-    const user = users.find((u) => u.id === id);
-    if (!user) {
-      throw new Error("User not found");
-    }
-    user.email = email;
-    return user;
-  },
-};
-###
+type Query {
+  continents: [Continent]
+  continent(code: String!): Continent
+  countries: [Country]
+  country(code: String!): Country
+  languages: [Language]
+  language(code: String!): Language
+  states(countryCode: String!): [State]
+}
+```
 
 ---
 
-## 🔄 Step 3: Complete Server Code (`index.js`)
+## 🚀 Getting Started
 
-###  
-const express = require("express");
-const { graphqlHTTP } = require("express-graphql");
-const { buildSchema } = require("graphql");
+1. Install dependencies:
+   ```
+   npm install
+   ```
 
-const users = [
-  { id: "1", name: "Alice", email: "alice@example.com" },
-  { id: "2", name: "Bob", email: "bob@example.com" },
-];
+2. Start the server:
+   ```
+   npm start
+   ```
 
-const schema = buildSchema(`
-  type User {
-    id: ID
-    name: String
-    email: String
-  }
-
-  type Query {
-    users: [User]
-  }
-
-  type Mutation {
-    createUser(name: String!, email: String!): User
-    updateUserEmail(id: ID!, email: String!): User
-  }
-`);
-
-const root = {
-  users: () => users,
-
-  createUser: ({ name, email }) => {
-    const newUser = {
-      id: String(users.length + 1),
-      name,
-      email,
-    };
-    users.push(newUser);
-    return newUser;
-  },
-
-  updateUserEmail: ({ id, email }) => {
-    const user = users.find((u) => u.id === id);
-    if (!user) {
-      throw new Error("User not found");
-    }
-    user.email = email;
-    return user;
-  },
-};
-
-const app = express();
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema: schema,
-    rootValue: root,
-    graphiql: true,
-  })
-);
-
-app.listen(4000, () => {
-  console.log("🚀 Server running at http://localhost:4000/graphql");
-});
-###
+3. Open GraphiQL at http://localhost:4000/graphql
 
 ---
 
-## 🧪 Step 4: Test Mutations
+## 🔍 Types of Queries
 
-Open GraphiQL at http://localhost:4000/graphql
+### 1. Simple Query
 
-### Create a User
+Get all continents:
 
-###  
-mutation {
-  createUser(name: "Charlie", email: "charlie@example.com") {
-    id
+```
+query {
+  continents {
+    code
     name
-    email
   }
 }
-###
+```
 
-### Update User Email
+### 2. Query with Arguments
 
-###  
-mutation {
-  updateUserEmail(id: "1", email: "alice_new@example.com") {
-    id
+Get a specific continent:
+
+```
+query {
+  continent(code: "AF") {
     name
-    email
+    code
   }
 }
-###
+```
+
+### 3. Nested Query
+
+Get continents with their countries:
+
+```
+query {
+  continents {
+    name
+    countries {
+      name
+      capital
+    }
+  }
+}
+```
+
+### 4. Query with Aliases
+
+Get multiple items with aliases:
+
+```
+query {
+  africa: continent(code: "AF") {
+    name
+  }
+  europe: continent(code: "EU") {
+    name
+  }
+}
+```
+
+### 5. Fragment for Reusable Fields
+
+Use fragments to avoid repetition:
+
+```
+fragment CountryFields on Country {
+  name
+  capital
+  currency
+}
+
+query {
+  countries {
+    ...CountryFields
+  }
+  continent(code: "AF") {
+    countries {
+      ...CountryFields
+    }
+  }
+}
+```
+
+### 6. Query with Variables
+
+Use variables for dynamic queries:
+
+```
+query GetContinent($code: String!) {
+  continent(code: $code) {
+    name
+    countries {
+      name
+    }
+  }
+}
+```
+
+With variables:
+```
+{
+  "code": "AS"
+}
+```
+
+### 7. Inline Fragment for Union Types
+
+(Not applicable here, but for future reference)
+
+### 8. Query with Directives
+
+Use @include or @skip:
+
+```
+query GetContinents($includeCountries: Boolean!) {
+  continents {
+    name
+    countries @include(if: $includeCountries) {
+      name
+    }
+  }
+}
+```
 
 ---
 
-## 📊 Mutation Flow Diagram
+## 🧪 Example Queries
 
-###  
+### Get All Countries
+
+```
+query {
+  countries {
+    code
+    name
+    capital
+  }
+}
+```
+
+### Get Country with States
+
+```
+query {
+  country(code: "US") {
+    name
+    states {
+      name
+    }
+  }
+}
+```
+
+### Get Languages
+
+```
+query {
+  languages {
+    code
+    name
+    native
+  }
+}
+```
+
+### Get States for a Country
+
+```
+query {
+  states(countryCode: "IN") {
+    code
+    name
+  }
+}
+```
+
+---
+
+## 📊 Query Flow Diagram
+
+```
 Client
-  ↓ mutation request
+  ↓ sends query
 GraphQL Server
-  ↓ calls mutation resolver
-Data Store (in-memory array)
-  ↑ returns updated data
+  ↓ parses query
+  ↓ validates against schema
+  ↓ executes resolvers
+Data Sources (JSON files)
+  ↑ returns data
 GraphQL Server
-  ↑ returns mutation response
+  ↑ formats response
 Client
-###
+```
 
 ---
 
 ## 🧠 Summary
 
-- Added mutations for creating and updating users  
-- Mutations accept arguments and return modified objects  
-- Mutations are key to modifying server data  
+- Queries fetch data from the server
+- Use arguments for specific data
+- Nest queries for related data
+- Aliases allow multiple operations
+- Fragments reduce duplication
+- Variables make queries dynamic
 
 ---
 
 ## ▶️ Next Episode
 
-We’ll explore **query arguments and variables** for dynamic queries!
+We’ll explore **mutations** for modifying data!
 
-➡️ Episode 5: Using Arguments and Variables in Queries
+➡️ Episode 5: Writing Mutations
