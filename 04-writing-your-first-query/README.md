@@ -253,7 +253,13 @@ query GetContinents($includeCountries: Boolean!) {
   }
 }
 ```
+Varable
+```
+{
+  "includeCountries": true
+}
 
+```
 ---
 
 ## 🧪 Example Queries
