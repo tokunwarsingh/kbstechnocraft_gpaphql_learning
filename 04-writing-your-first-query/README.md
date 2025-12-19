@@ -186,6 +186,13 @@ With variables:
   "code": "AS"
 }
 ```
+you can test using curl cmmad as below
+```
+curl --request POST \
+  --header 'content-type: application/json' \
+  --url http://localhost:4000/graphql \
+  --data '{"query":"query GetContinent($code: String!) { continent(code: $code) { name countries { name } } }", "variables": {"code": "AS"}}'
+```
 
 ### 7. Inline Fragment for Union Types
 Inline fragments are used when a query can return **multiple object types** (Union Types).
