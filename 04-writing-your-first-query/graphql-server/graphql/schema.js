@@ -29,6 +29,8 @@ const schema = buildSchema(`
     name: String
   }
 
+  union SearchResult = Country | State | Language
+
   type Query {
     continents: [Continent]
     continent(code: String!): Continent
@@ -37,6 +39,7 @@ const schema = buildSchema(`
     languages: [Language]
     language(code: String!): Language
     states(countryCode: String!): [State]
+    search(keyword: String!): [SearchResult]
   }
 `);
 

@@ -18,13 +18,36 @@ const root = {
   states: ({ countryCode }) => {
     const countryStates = statesData.find(s => s.code === countryCode);
     return countryStates ? countryStates.states : [];
+  },
+
+  // --- ADDED SEARCH RESOLVER ---
+  search: ({ keyword }) => {
+    const k = keyword.toLowerCase();
+    const results = [];
+
+    // 1. Search Countries
+    countriesData
+      .filter(c => c.name.toLowerCase().includes(k))
+      .forEach(c => results.push({ ...c, __typename: 'Country' }));
+
+    // 2. Search Languages
+    languagesData
+      .filter(l => l.name.toLowerCase().includes(k))
+      .forEach(l => results.push({ ...l, __typename: 'Language' }));
+
+    // 3. Search States (Flatten the states array first)
+    statesData
+      .flatMap(s => s.states)
+      .filter(st => st.name.toLowerCase().includes(k))
+      .forEach(st => results.push({ ...st, __typename: 'State' }));
+
+    return results;
   }
 };
 
 // Add nested resolvers
 root.Continent = {
   countries: (continent) => {
-    // Assuming continent.countries is an array of {name, code}
     return continent.countries.map(country => countriesData.find(c => c.code === country.code)).filter(Boolean);
   }
 };
