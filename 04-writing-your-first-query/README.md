@@ -188,8 +188,49 @@ With variables:
 ```
 
 ### 7. Inline Fragment for Union Types
+Inline fragments are used when a query can return **multiple object types** (Union Types).
 
-(Not applicable here, but for future reference)
+#### Union Definition
+```
+union SearchResult = Country | State | Language
+```
+
+#### Sample Query
+```
+query Search($keyword: String!) {
+  search(keyword: $keyword) {
+    __typename
+
+    ... on Country {
+      code
+      name
+      capital
+      currency
+    }
+
+    ... on State {
+      code
+      name
+    }
+
+    ... on Language {
+      code
+      name
+      native
+      rtl
+    }
+  }
+}
+```
+
+Variables:
+```
+{
+  "keyword": "in"
+}
+```
+
+---
 
 ### 8. Query with Directives
 
