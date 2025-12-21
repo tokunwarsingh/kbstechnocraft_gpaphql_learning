@@ -7,101 +7,137 @@ const countriesData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../../
 const languagesData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../../data/languages.json'), 'utf8'));
 const statesData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../../data/states.json'), 'utf8'));
 
-// Define resolvers
+/**
+ * Class-based resolvers allow nested fields like countryCount 
+ * to be resolved as methods on the object.
+ */
+class Continent {
+  constructor(data) {
+    Object.assign(this, data);
+  }
+
+  // Field Resolver: countryCount
+  countryCount() {
+    console.log(`Field Resolver: Continent.countryCount - ${this.name}`);
+    return this.countries ? this.countries.length : 0;
+  }
+
+  // Field Resolver: countries
+  countries() {
+    console.log(`Field Resolver: Continent.countries - ${this.name}`);
+    return this.countries
+      .map(c => countriesData.find(cd => cd.code === c.code))
+      .filter(Boolean)
+      .map(c => new Country(c));
+  }
+}
+
+class Country {
+  constructor(data) {
+    Object.assign(this, data);
+  }
+
+  // Field Resolver: states
+  states() {
+    console.log(`Field Resolver: Country.states - ${this.name}`);
+    const countryStates = statesData.find(s => s.code === this.code);
+    return countryStates ? countryStates.states.map(s => new State(s, this)) : [];
+  }
+
+  // Field Resolver: stateCount
+  stateCount() {
+    console.log(`Field Resolver: Country.stateCount - ${this.name}`);
+    const countryStates = statesData.find(s => s.code === this.code);
+    return countryStates ? countryStates.states.length : 0;
+  }
+
+  // Field Resolver: continent
+  continent() {
+    console.log(`Field Resolver: Country.continent - ${this.name}`);
+    const contData = continentsData.find(cont =>
+      cont.countries.some(c => c.code === this.code)
+    );
+    return contData ? new Continent(contData) : null;
+  }
+}
+
+class State {
+  constructor(data, countryParent) {
+    Object.assign(this, data);
+    this._country = countryParent;
+  }
+
+  // Field Resolver: country
+  country() {
+    console.log(`Field Resolver: State.country - ${this.name}`);
+    if (this._country) return this._country;
+    
+    const countryData = countriesData.find(c =>
+      statesData.find(s => s.states.some(st => st.code === this.code))?.code === c.code
+    );
+    return countryData ? new Country(countryData) : null;
+  }
+}
+
+// Define Root Resolvers
 const root = {
-  // Root Query Resolvers
   continents: () => {
-    console.log('Resolver: continents - Returning all continents');
-    return continentsData;
+    console.log('Resolver: continents');
+    return continentsData.map(c => new Continent(c));
   },
 
   continent: ({ code }) => {
-    console.log(`Resolver: continent - Finding continent with code: ${code}`);
-    return continentsData.find(c => c.code === code);
+    console.log(`Resolver: continent - ${code}`);
+    const data = continentsData.find(c => c.code === code);
+    return data ? new Continent(data) : null;
   },
 
   countries: () => {
-    console.log('Resolver: countries - Returning all countries');
-    return countriesData;
+    console.log('Resolver: countries');
+    return countriesData.map(c => new Country(c));
   },
 
   country: ({ code }) => {
-    console.log(`Resolver: country - Finding country with code: ${code}`);
-    return countriesData.find(c => c.code === code);
+    console.log(`Resolver: country - ${code}`);
+    const data = countriesData.find(c => c.code === code);
+    return data ? new Country(data) : null;
   },
 
   languages: () => {
-    console.log('Resolver: languages - Returning all languages');
+    console.log('Resolver: languages');
     return languagesData;
   },
 
   language: ({ code }) => {
-    console.log(`Resolver: language - Finding language with code: ${code}`);
+    console.log(`Resolver: language - ${code}`);
     return languagesData.find(l => l.code === code);
   },
 
   states: ({ countryCode }) => {
-    console.log(`Resolver: states - Finding states for country: ${countryCode}`);
+    console.log(`Resolver: states - ${countryCode}`);
     const countryStates = statesData.find(s => s.code === countryCode);
-    return countryStates ? countryStates.states : [];
+    return countryStates ? countryStates.states.map(s => new State(s)) : [];
   },
 
-  searchCountries: ({ search }) => {
-    console.log(`Resolver: searchCountries - Searching countries with: ${search}`);
-    return countriesData.filter(country =>
-      country.name.toLowerCase().includes(search.toLowerCase()) ||
-      country.capital.toLowerCase().includes(search.toLowerCase())
-    );
-  }
-};
+searchCountries: ({ search }) => {
+  console.log(`Resolver: searchCountries - Searching countries with: ${search}`);
+  const searchLower = search.toLowerCase();
 
-// Field Resolvers for nested data
-root.Continent = {
-  // Resolver for countries field on Continent type
-  countries: (continent) => {
-    console.log(`Field Resolver: Continent.countries - Resolving countries for ${continent.name}`);
-    return continent.countries.map(country => countriesData.find(c => c.code === country.code)).filter(Boolean);
-  },
+  return countriesData
+    .filter(country => {
+      // Check if fields exist before calling toLowerCase()
+      const nameMatch = country.name 
+        ? country.name.toLowerCase().includes(searchLower) 
+        : false;
+        
+      const capitalMatch = country.capital 
+        ? country.capital.toLowerCase().includes(searchLower) 
+        : false;
 
-  // Computed field resolver
-  countryCount: (continent) => {
-    console.log(`Field Resolver: Continent.countryCount - Counting countries for ${continent.name}`);
-    return continent.countries.length;
-  }
-};
-
-root.Country = {
-  // Resolver for states field on Country type
-  states: (country) => {
-    console.log(`Field Resolver: Country.states - Resolving states for ${country.name}`);
-    const countryStates = statesData.find(s => s.code === country.code);
-    return countryStates ? countryStates.states : [];
-  },
-
-  // Computed field resolver
-  stateCount: (country) => {
-    console.log(`Field Resolver: Country.stateCount - Counting states for ${country.name}`);
-    const countryStates = statesData.find(s => s.code === country.code);
-    return countryStates ? countryStates.states.length : 0;
-  },
-
-  // Resolver for continent field (reverse relationship)
-  continent: (country) => {
-    console.log(`Field Resolver: Country.continent - Finding continent for ${country.name}`);
-    return continentsData.find(cont =>
-      cont.countries.some(c => c.code === country.code)
-    );
-  }
-};
-
-root.State = {
-  // Resolver for country field on State type
-  country: (state, args, context, info) => {
-    console.log(`Field Resolver: State.country - Finding country for state ${state.name}`);
-    // Get country code from parent (states are grouped by country)
-    const countryCode = info.path.prev.prev.key; // This is a simplified example
-    return countriesData.find(c => c.code === countryCode);
-  }
+      return nameMatch || capitalMatch;
+    })
+    .map(c => new Country(c));
+}
 };
 
 module.exports = root;
