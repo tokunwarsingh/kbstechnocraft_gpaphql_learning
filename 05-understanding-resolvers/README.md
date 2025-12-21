@@ -114,7 +114,12 @@ type Query {
 
 ### 1. Root Query Resolvers
 
-Resolve top-level queries defined in the Query type.
+Root Query Resolvers handle top-level queries defined in the GraphQL Query type.
+They are the entry point for any data request coming from the client.
+
+When a client runs a GraphQL query, GraphQL looks for a resolver with the same name as the field in the Query type.
+
+This root object contains resolver functions for each field defined in the GraphQL Query type.
 
 ```javascript
 const root = {
@@ -130,9 +135,25 @@ const root = {
 };
 ```
 
+#### What it does:
+
+- Resolves the continents query
+- Returns all continent records
+- Does not take arguments
+
 ### 2. Field Resolvers
 
-Resolve fields on specific types (not Query).
+Resolve fields on specific object types (not `Query`). These resolvers run **only when the field is requested** and receive the **parent object** as the first argument.
+
+**Key Points:**
+- First argument is the parent object (`continent`)
+- Used for nested data resolution
+- Ideal for transforming or enriching data
+
+**Execution Flow:**
+1. Root resolver returns parent object
+2. GraphQL encounters nested field
+3. Field resolver executes with parent
 
 ```javascript
 root.Continent = {
@@ -145,7 +166,17 @@ root.Continent = {
 
 ### 3. Computed Field Resolvers
 
-Resolve fields that don't exist in the data but are computed.
+Computed resolvers generate values **dynamically** and are not stored in the data source.
+
+**Why use them?**
+- Avoid redundant data
+- Keep business logic on server
+- Cleaner schema design
+
+**Execution Flow:**
+1. Parent object resolved
+2. Computed field requested
+3. Resolver calculates value at runtime
 
 ```javascript
 root.Continent = {
@@ -158,7 +189,17 @@ root.Continent = {
 
 ### 4. Relationship Resolvers
 
-Resolve relationships between types.
+Relationship resolvers connect one type to another, similar to foreign keys in databases.
+
+**Use Cases:**
+- One-to-many relationships
+- Bi-directional navigation
+- Clean API modeling
+
+**Execution Flow:**
+1. Parent object resolved
+2. Related field requested
+3. Relationship resolver finds linked object
 
 ```javascript
 root.Country = {
@@ -173,7 +214,17 @@ root.Country = {
 
 ### 5. Search/Filter Resolvers
 
-Resolve complex queries with filtering logic.
+Search resolvers implement **custom filtering logic** using query arguments.
+
+**Why they matter:**
+- Flexible search APIs
+- Server-side filtering
+- Reduced client logic
+
+**Execution Flow:**
+1. Arguments passed to resolver
+2. Dataset filtered
+3. Matching results returned
 
 ```javascript
 root = {
