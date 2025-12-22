@@ -447,6 +447,210 @@ mutation UpdateIfExists($code: String!, $input: CountryInput!) {
 
 ---
 
+## Test Case 1: Create Country
+### Mutation
+```
+mutation {
+  createCountry(input: {
+    code: "XX"
+    name: "Test Country"
+    capital: "Test City"
+    currency: "TST"
+    phone: "999"
+  }) {
+    code
+    name
+    capital
+    currency
+    phone
+  }
+}
+```
+Expected Response
+```
+{
+  "data": {
+    "createCountry": {
+      "code": "XX",
+      "name": "Test Country",
+      "capital": "Test City",
+      "currency": "TST",
+      "phone": "999"
+    }
+  }
+}
+```
+
+###🔍 Verify Created Country
+```
+query {
+  country(code: "XX") {
+    code
+    name
+    capital
+  }
+}
+```
+
+✔ Confirms that the country was created successfully.
+
+## 🟡 Test Case 2: Update Country
+```
+mutation {
+  updateCountry(
+    code: "XX"
+    input: {
+      name: "Updated Test Country"
+      capital: "Updated City"
+      currency: "UTS"
+      phone: "111"
+    }
+  ) {
+    code
+    name
+    capital
+    currency
+    phone
+  }
+}
+```
+### 🔍 Verify Update
+```
+query {
+  country(code: "XX") {
+    name
+    capital
+  }
+}
+```
+
+## 🔴 Test Case 3: Update Non-Existing Country (Error Case)
+```
+mutation {
+  updateCountry(
+    code: "INVALID"
+    input: {
+      name: "Should Fail"
+      capital: "Nowhere"
+      currency: "XXX"
+      phone: "000"
+    }
+  ) {
+    code
+  }
+}
+```
+Expected Error
+```
+{
+  "errors": [
+    {
+      "message": "Country with code INVALID not found"
+    }
+  ],
+  "data": null
+}
+```
+
+## ⚫ Test Case 4: Delete Country
+```
+mutation {
+  deleteCountry(code: "XX")
+}
+```
+Expected Response
+```
+{
+  "data": {
+    "deleteCountry": true
+  }
+}
+```
+🔍 Verify Deletion
+```
+query {
+  country(code: "XX") {
+    code
+    name
+  }
+}
+```
+
+Expected output:
+```
+{
+  "data": {
+    "country": null
+  }
+}
+```
+## 🟣 Test Case 5: Create State
+```
+mutation {
+  createState(input: {
+    code: "TS"
+    name: "Test State"
+    countryCode: "US"
+  }) {
+    code
+    name
+    country {
+      code
+      name
+    }
+  }
+}
+```
+## 🔀 Test Case 6: Multiple Mutations in One Request
+```
+mutation {
+  createCountry: createCountry(input: {
+    code: "ZZ"
+    name: "Another Test Country"
+    capital: "Another City"
+    currency: "ZZZ"
+    phone: "000"
+  }) {
+    code
+    name
+  }
+
+  createContinent: createContinent(input: {
+    code: "ZZC"
+    name: "Another Test Continent"
+  }) {
+    code
+    name
+  }
+}
+```
+
+✔ Mutations execute sequentially (top to bottom).
+
+🐞 Debugging Tips
+
+Check server console logs
+
+Validate required fields (String!)
+
+Use the Docs panel in GraphiQL
+
+Confirm correct input object structure
+
+✅ Recommended Testing Flow
+
+Create mutation
+
+Query to verify
+
+Update mutation
+
+Query again
+
+Delete mutation
+
+Query again
+
 ## ▶️ Next Episode
 
 We’ll explore **input types and arguments** in more detail!
