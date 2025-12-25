@@ -75,6 +75,9 @@ const schema = buildSchema(`
     updateState(countryCode: String!, code: String!, name: String!): State
     deleteState(countryCode: String!, code: String!): Boolean
 }
+type Subscription {
+    countryAdded: Country
+  }
    
 `);
 

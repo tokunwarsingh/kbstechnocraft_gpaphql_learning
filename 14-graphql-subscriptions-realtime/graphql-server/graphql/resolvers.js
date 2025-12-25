@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const { EventEmitter } = require('events');
+const ee = new EventEmitter();
 
 // Load data from JSON files
 let continentsData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../../data/continents.json'), 'utf8'));
@@ -64,7 +66,23 @@ const root = {
       phone: input.phone
     };
     countriesData.push(newCountry);
+    // Trigger the subscription event
+    ee.emit('COUNTRY_ADDED', newCountry);
+
+    console.log(`Mutation: Added country ${newCountry.name}`);
+
     return newCountry;
+  },
+
+  // --- Subscriptions ---
+  countryAdded: async function* () {
+    console.log("Subscription: countryAdded listener started");
+    
+    // We yield data whenever the EventEmitter receives the 'COUNTRY_ADDED' event
+    while (true) {
+      const country = await new Promise(resolve => ee.once('COUNTRY_ADDED', resolve));
+      yield { countryAdded: country };
+    }
   },
 
   updateCountry: ({ code, input }) => {
